@@ -78,7 +78,7 @@
     <div class="main_wrapper">
       <div class="main_message"> 
         <!-- エラーによりリダイレクトされた場合は、エラーメッセージを表示 -->
-        <?php 
+        <?php
           if($errorFlag == 1) {            
             echo '<p>'.$temporaryUser->errorMessageLastName.'</p>';
             echo '<p>'.$temporaryUser->errorMessageFirstName.'</p>';
