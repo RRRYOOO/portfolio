@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  font-family: “Segoe UI”, Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+body {
+  margin: 0;
+  width: 100%;
+}
+
+/* スマートフォン用デザイン */
+header {
+  background-color: black;
+  color: white;
+  height: 4vmax;
+  left: 0;
+  margin-bottom: 1vh;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%; 
+  z-index: 10;
+}
+
+.header_wrapper {
+  background-color: aqua;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5vh 0;
+  width: 100%;
+}
+
+.header_left {
+  background-color: blue;
+  width: 38%;
+}
+
+.header_center {
+  background-color: chartreuse;
+  width: 20%;
+}
+
+.header_right {
+  background-color: coral;
+  width: 38%;
+}
+
+.site_title {
+  font-size: 3.5vw;
+  font-weight: bold;
+  line-height: 4vmax;
+}
+
+.header_contents {
+  font-size: 2vw;
+  line-height: 4vmax;
+}
+
+.main {
+  background-color: white;
+  margin-top: 4vmax;
+  padding: 0.5vh 0;
+  width: 100%; 
+}
+
+.main_wrapper {
+  background-color: green;
+  margin: 0.5vh 1vw;
+  text-align: center;
+}
+
+.main_message {
+  background-color: yellow;
+  font-size: 1vw;
+  margin: 0.5vh 0;
+  padding: 0 1.5vw 1vh;
+  text-align: left;
+}
+
+.main_title {
+  background-color: orange;
+  margin: 0.5vh 0;
+  text-align: left;
+}
+
+.main_title span {
+  background-color: lime;
+  font-size: 1.8vw;
+  font-weight: bold;
+}
+
+.main_contents {
+  background-color: turquoise;
+  font-size: 1.4vw;
+  margin: 0.5vh 0 0 0;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  height: 3.5vmax;
+  width: 100%; 
+}
+
+.footer_wrapper {
+  background-color: yellow;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+}
+
+.footer_left {
+  background-color: chocolate;
+  width: 24%;
+}
+
+.footer_center {
+  background-color: crimson;
+  width: 48%;
+}
+
+.footer_right {
+  background-color: darkgreen;
+  width: 24%;
+}
+
+.site_inc {
+  font-size: 2.2vw;
+  line-height: 3.5vmax;
+}
+
+.footer_contents {
+  font-size: 2vw;
+  line-height: 3.5vmax;
+}
+
+
+/* PC用デザイン */
+@media (min-width: 1024px){
+  header {
+    background-color: black;
+    color: white;
+    height: 8vh;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%; 
+    z-index: 10;
+  }
+
+  .header_wrapper {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5vh 0;
+    width: 100%;
+  }
+
+  .header_left {
+    background-color: blue;
+    width: 38%;
+  }
+
+  .header_center {
+    background-color: chartreuse;
+    width: 20%;
+  }
+
+  .header_right {
+    background-color: coral;
+    width: 38%;
+  }
+
+  .site_title {
+    font-size: 3vw;
+    font-weight: bold;
+    line-height: 8vh;
+  }
+
+  .header_contents {
+    font-size: 1.7vw;
+    line-height: 8vh;
+  }
+
+  .main {
+    background-color: white;
+    margin-top: 8vh;
+    padding: 2vh 0;
+    width: 100%; 
+  }
+
+  .main_wrapper {
+    background-color: green;
+    margin: 0 1vw;
+    text-align: center;
+  }
+
+  .main_message {
+    background-color: yellow;
+    font-size: 1.4vw;
+    margin: 0.5vh 0;
+    padding: 0 1.5vw 1vh;
+    text-align: left;
+  }
+
+  .main_title {
+    background-color: orange;
+    margin: 0.5vh 0;
+    text-align: left;
+  }
+
+  .main_title span{
+    background-color: line;
+    font-size: 2.2vw;
+    font-weight: bold;
+  }
+
+  .main_contents {
+    background-color: turquoise;
+    font-size: 2vw;
+    margin: 0.5vh 0 0 0;
+  }
+
+  footer {
+    background-color: black;
+    color: white;
+    height: 8vh;
+    width: 100%; 
+  }
+
+  .footer_wrapper {
+    background-color: yellow;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer_left {
+    background-color: chocolate;
+    width: 24%;
+  }
+
+  .footer_center {
+    background-color: crimson;
+    width: 48%;
+  }
+
+  .footer_right {
+    background-color: darkgreen;
+    width: 24%;
+  }
+
+  .site_inc {
+    font-size: 2.5vw;
+    line-height: 8vh;
+  }
+
+  .footer_contents {
+    font-size: 2vw;
+    line-height: 8vh;
+  }  
+}
+
+

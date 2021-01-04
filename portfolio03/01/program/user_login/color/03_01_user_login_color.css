@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  font-family: “Segoe UI”, Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* スマホ用デザイン */
+.main_container {
+  background-color: yellow;
+  border: 2px solid rgb(72, 72, 72);
+  margin: 0 1vw;
+  padding: 2vh 2vw;
+}
+
+.input_contents {
+  background-color: turquoise;
+  margin-top: 4vmin;
+  padding: 1vh 1vw;
+  text-align: left;
+  width: 100%
+}
+
+.input_item {
+  background-color: tomato;
+  display: inline-block;
+  font-size: 2.5vmin;
+  text-align: left;
+  width: 23vw;
+}
+
+.input_area {
+  border: 1px solid gray;
+  font-size: 2vmin;
+  width: 63vw;
+}
+
+.login_input {
+  background-color: turquoise;
+  margin-top: 3vh;
+  padding: 1vh 1vw;
+  text-align: center;
+  width: 100%
+}
+
+.login_button {
+  background-color:  rgba(0, 0, 205, 0.8);
+  border: 1px solid black;
+  border-radius: 7px;
+  color: white;
+  font-size: 2.5vmin;
+  margin-right: 5vw;
+  padding: 0.8vh 0;
+  width: 35vw;
+}
+
+.login_button:hover {
+  background-color: rgba(0, 0, 205, 0.6);
+}
+
+.login_button:focus {
+  background-color:  rgba(0, 0, 205, 1);
+  outline: 0;
+}
+
+.link_to_login {
+  background-color: turquoise;
+  margin-top: 2vh;
+  padding: 1vh 1vw;
+  text-align: left;
+  width: 100%
+}
+
+.link {
+  color: darkslategray;
+  font-size: 2vmin;
+}
+
+.link:hover {
+  color: black;
+}
+
+.link_to_start {
+  background-color: orange;
+  margin-top: 1vh;
+  padding: 0.5vh 1vw;
+  text-align: left;
+  width: 100%
+}
+
+/* PC用デザイン */
+@media (min-width: 1024px){
+  .main_container {
+    background-color: yellow;
+    border: 2px solid rgb(72, 72, 72);
+    margin: 0 2vw;
+    padding: 2vh 2vw;
+  }
+
+  .input_contents {
+    background-color: turquoise;
+    margin: 4vh auto 0;
+    padding: 1vh 1vw;
+    text-align: left;
+    width: 90%
+  }
+
+  .input_item {
+    background-color: tomato;
+    display: inline-block;
+    font-size: 1.2vw;
+    text-align: left;
+    width: 10vw;
+  }
+
+  .input_area {
+    border: 1px solid gray;
+    font-size: 2vh;
+    width: 65vw;
+  }
+
+  .login_input {
+    background-color: turquoise;
+    margin: 4vh auto 0;
+    padding: 1vh 1vw;
+    text-align: right;
+    width: 90%;
+  }
+
+  .login_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 7px;
+    color: white;
+    font-size: 1.2vw;
+    margin-right: 3vw;
+    padding: 1vh 0;
+    width: 20vw;
+  }
+
+  .login_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .login_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .link_to_login {
+    background-color: turquoise;
+    margin: 1vh auto ;
+    padding: 0 1vw;
+    text-align: left;
+    width: 90%
+  }
+
+  .link {
+    color: darkslategray;
+    font-size: 1vw;
+  }
+
+  .link:hover {
+    color: black;
+  }
+
+  .link_to_start {
+    background-color: orange;
+    margin: 1vh auto ;
+    padding: 0 1vw;
+    text-align: left;
+    width: 90%
+  }
+}
