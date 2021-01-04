@@ -56,7 +56,7 @@
       $sth->bindparam(':department', $department);
       $sth->execute();
       $row = $sth->fetch(PDO::FETCH_ASSOC);
-      $departmentID = $row['department'];
+      $departmentID = $row['id'];
       // 部署IDを返す
       return $departmentID;
     }
