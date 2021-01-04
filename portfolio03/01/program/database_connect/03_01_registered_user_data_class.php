@@ -157,12 +157,12 @@
     public static function getUserDepartmentID($mailAddress) {
       // データベースに接続
       self::connectToDatabase();
-      $sql = 'SELECT user_department FROM users WHERE user_mailaddress = :user_mailaddress;';
+      $sql = 'SELECT user_department_id FROM users WHERE user_mailaddress = :user_mailaddress;';
       $sth = self::$dbh->prepare($sql);
       $sth->bindparam(':user_mailaddress', $mailAddress);
       $sth->execute();
       $row = $sth->fetch(PDO::FETCH_ASSOC);
-      $userDepartmentID = $row['user_department'];
+      $userDepartmentID = $row['user_department_id'];
       // 部署IDを返す
       return $userDepartmentID;
     }

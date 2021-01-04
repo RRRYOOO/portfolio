@@ -346,8 +346,8 @@
         date_default_timezone_set('Asia/Tokyo');
         $registrationDate = date('Y-m-d H:i:s');
         // ユーザ登録を実行
-        $sql = 'INSERT INTO users (registration_date, user_lastname, user_firstname, user_mailaddress, user_password, user_gender, user_age, user_department) 
-        VALUES (:registration_date, :user_lastname, :user_firstname, :user_mailaddress, :user_password, :user_gender, :user_age, :user_department);';
+        $sql = 'INSERT INTO users (registration_date, user_lastname, user_firstname, user_mailaddress, user_password, user_gender, user_age, user_department_id) 
+        VALUES (:registration_date, :user_lastname, :user_firstname, :user_mailaddress, :user_password, :user_gender, :user_age, :user_department_id);';
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':registration_date', $registrationDate, PDO::PARAM_STR);
         $sth->bindParam(':user_lastname', $this->tempUserLastName, PDO::PARAM_STR);
@@ -356,7 +356,7 @@
         $sth->bindParam(':user_password', $this->tempUserPasswordHashed, PDO::PARAM_STR);
         $sth->bindParam(':user_gender', $this->tempUserGender, PDO::PARAM_STR);
         $sth->bindParam(':user_age', $this->tempUserAge, PDO::PARAM_INT);
-        $sth->bindParam(':user_department', $this->tempUserDepartment, PDO::PARAM_INT);
+        $sth->bindParam(':user_department_id', $this->tempUserDepartment, PDO::PARAM_INT);
         $sth->execute();
         unset($this->dbh);
         // 登録が完了したか確認（登録したメールアドレスを読み出すことができるか確認）
