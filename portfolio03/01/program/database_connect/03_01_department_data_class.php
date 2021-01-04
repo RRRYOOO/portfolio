@@ -15,7 +15,7 @@
 
     private static function connectToDatabase() {
       // $dbhを既に作成済みの場合
-      if(!is_null(self::$dbh)){
+      if(!empty(self::$dbh)){
         return;
       }
       // $dbhを新規作成の場合

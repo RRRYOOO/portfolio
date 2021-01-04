@@ -30,7 +30,6 @@
       if(!empty(self::$dbh)){
         return self::$dbh;
       }
-      self::$count++;
       self::connectToDatabase();
       return self::$dbh;
     }

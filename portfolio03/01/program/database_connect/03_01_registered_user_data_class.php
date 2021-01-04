@@ -14,7 +14,7 @@
 
     private static function connectToDatabase() {
       // $dbhを既に作成済みの場合
-      if(!is_null(self::$dbh)){
+      if(!empty(self::$dbh)){
         return;
       }
       // $dbhを新規作成の場合
@@ -157,12 +157,12 @@
     public static function getUserDepartmentID($mailAddress) {
       // データベースに接続
       self::connectToDatabase();
-      $sql = 'SELECT user_department_id FROM users WHERE user_mailaddress = :user_mailaddress;';
+      $sql = 'SELECT user_department FROM users WHERE user_mailaddress = :user_mailaddress;';
       $sth = self::$dbh->prepare($sql);
       $sth->bindparam(':user_mailaddress', $mailAddress);
       $sth->execute();
       $row = $sth->fetch(PDO::FETCH_ASSOC);
-      $userDepartmentID = $row['user_department_id'];
+      $userDepartmentID = $row['user_department'];
       // 部署IDを返す
       return $userDepartmentID;
     }
@@ -172,7 +172,7 @@
       // 渡されたメールアドレスで登録されているユーザの部署IDを受け取る
       $userDepartmentID = self::getUserDepartmentID($mailAddress);
       // 部署IDを部署名に変換する
-      $userDepartment = DepartmentData:: exchangeIDToDepartment($userDepartmentID);
+      $userDepartment = DepartmentData::exchangeIDToDepartment($userDepartmentID);
       // 部署名を返す
       return $userDepartment;
     }
