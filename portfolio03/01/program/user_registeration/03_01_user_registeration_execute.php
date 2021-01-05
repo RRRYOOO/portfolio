@@ -17,7 +17,7 @@
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
     // ユーザ登録画面へ遷移する
-    header('Location: ./03_01_user_registeration.php');
+    header('Location: ./03_01_user_registeration.html');
     exit;
   // ユーザ登録の実行が成功した場合
   } else if($executionCompFlag == 1){
@@ -30,7 +30,7 @@
     // ログインユーザ情報をセッションに保存
     $_SESSION['LoginUser'] = $loginUser;
     // ToDo表示画面へ遷移
-    header('Location: ../todo_show/03_01_todo_show.php');
+    header('Location: ../todo_show/03_01_todo_show.html');
     exit;
     // その他何かしらのエラーが発生した場合  
   } else {
@@ -39,7 +39,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、ユーザ登録画面に戻る
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
-    header('Location: ./03_01_user_registeration.php');
+    header('Location: ./03_01_user_registeration.html');
     exit;
   }
   
