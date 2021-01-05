@@ -3,7 +3,7 @@
   font-family: “Segoe UI”, Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* スマホ用デザイン */
+/* スマートフォン(Portfolio)用デザイン */
 .main_container {
   /*background-color: yellow;*/
   border: 2px solid rgb(72, 72, 72);
@@ -105,8 +105,8 @@
   width: 100%
 }
 
-/* PC用デザイン */
-@media (min-width: 1024px){
+/* PC用、スマートフォン(Landscape)用デザイン */
+@media (min-width: 1024px), (orientation: landscape) {
   .main_container {
     /*background-color: yellow;*/
     border: 2px solid rgb(72, 72, 72);

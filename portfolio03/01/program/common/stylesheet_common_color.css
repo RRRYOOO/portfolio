@@ -7,7 +7,7 @@ body {
   width: 100%;
 }
 
-/* スマートフォン用デザイン */
+/* スマートフォン(Portfolio)用デザイン */
 header {
   background-color: black;
   color: white;
@@ -40,12 +40,12 @@ header {
 }
 
 .header_right {
-  background-color: coral;
+ background-color: coral;
   width: 38%;
 }
 
 .site_title {
-  font-size: 3.5vw;
+  font-size: 5vw;
   font-weight: bold;
   line-height: 4vmax;
 }
@@ -70,22 +70,24 @@ header {
 
 .main_message {
   background-color: yellow;
-  font-size: 1vw;
   margin: 0.5vh 0;
-  padding: 0 1.5vw 1vh;
+  padding: 0.2vh 1.5vw;
   text-align: left;
+}
+
+.main_message p {
+  background-color: pink;
+  color: red;
+  font-size: 2vw;
+  margin: 0.2vmin 0;
 }
 
 .main_title {
   background-color: orange;
+  font-size: 3vw;
+  font-weight: bold;
   margin: 0.5vh 0;
   text-align: left;
-}
-
-.main_title span {
-  background-color: lime;
-  font-size: 1.8vw;
-  font-weight: bold;
 }
 
 .main_contents {
@@ -135,8 +137,8 @@ footer {
 }
 
 
-/* PC用デザイン */
-@media (min-width: 1024px){
+/* PC用、スマートフォン(Landscape)用デザイン */
+@media (min-width: 1024px), (orientation: landscape){
   header {
     background-color: black;
     color: white;
@@ -198,22 +200,24 @@ footer {
 
   .main_message {
     background-color: yellow;
-    font-size: 1.4vw;
     margin: 0.5vh 0;
-    padding: 0 1.5vw 1vh;
+    padding: 0.2vh 1.5vw;
     text-align: left;
+  }
+  
+  .main_message p {
+    background-color: pink;
+    color: red;
+    font-size: 1.2vw;
+    margin: 0.2vmin 0;
   }
 
   .main_title {
     background-color: orange;
-    margin: 0.5vh 0;
-    text-align: left;
-  }
-
-  .main_title span{
-    background-color: line;
     font-size: 2.2vw;
     font-weight: bold;
+    margin: 0.5vh 0;
+    text-align: left;
   }
 
   .main_contents {

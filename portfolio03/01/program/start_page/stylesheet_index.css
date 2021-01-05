@@ -9,140 +9,148 @@ body {
 
 /* スマートフォン用デザイン */
 header {
-  background-color: black;
-  color: white;
-  height: 4vmax;
-  left: 0;
-  margin-bottom: 1vh;
-  position: fixed;
-  text-align: center;
-  top: 0;
+  background-color: pink;
+  color: black;
+  height: 25vmin;
+  padding: 0.5vw;
   width: 100%; 
-  z-index: 10;
 }
 
 .header_wrapper {
-  /*background-color: aqua;*/
-  display: flex;
-  justify-content: space-around;
-  padding: 0.5vh 0;
+  background-color: aqua;
+  padding: 0.5vh 5vw;
+  text-align: center;
   width: 100%;
 }
 
-.header_left {
-  /*background-color: blue;*/
-  width: 38%;
-}
-
-.header_center {
-  /*background-color: chartreuse;*/
-  width: 20%;
-}
-
-.header_right {
- /*background-color: coral;*/
-  width: 38%;
-}
-
-.site_title {
-  font-size: 3.5vw;
+.header_title {
+  background-color: coral;
+  font-size: 12vw;
   font-weight: bold;
-  line-height: 4vmax;
-}
-
-.header_contents {
-  font-size: 2vw;
-  line-height: 4vmax;
+  line-height: 23vmin;
+  padding: 0;
+  text-align: left;
+  width: 60vw;
 }
 
 .main {
   background-color: white;
-  margin-top: 4vmax;
-  padding: 0.5vh 0;
+  height: 62vh;
+  margin: 0.5vw;
+  padding: 0.5vw;
   width: 100%; 
 }
 
 .main_wrapper {
-  /*background-color: green;*/
+  background-color: green;
+  height: 60vh;
   margin: 0.5vh 1vw;
   text-align: center;
 }
 
-.main_message {
-  /*background-color: yellow;*/
-  margin: 0.5vh 0;
-  padding: 0.2vh 1.5vw;
-  text-align: left;
+.main_container {
+  background-color: yellow;
+  border: 2px solid rgb(72, 72, 72);
+  margin: 0 1vw;
+  padding: 2vh 2vw;
 }
 
-.main_message p {
-  /*background-color: pink;*/
-  color: red;
-  font-size: 1.4vw;
-  line-height: 1.4vw;
-  margin: 0.2vmin 0;
+.main_left {
+  background-color: palevioletred;
+  display: block;
+  width: 100%;
 }
 
-.main_title {
-  /*background-color: orange;*/
-  margin: 0.5vh 0;
-  text-align: left;
+.main_right {
+  background-color: skyblue;
+  padding: 1vmin;
+  width: 100%;
 }
 
-.main_title span {
-  /*background-color: lime;*/
-  font-size: 1.8vw;
-  font-weight: bold;
-}
-
-.main_contents {
-  /*background-color: turquoise;*/
-  font-size: 1.4vw;
-  margin: 0.5vh 0 0 0;
+.main_button {
+  background-color: beige;
+  margin: 1vmin;
 }
 
 footer {
   background-color: black;
-  color: white;
   height: 3.5vmax;
   width: 100%; 
 }
 
-.footer_wrapper {
-  /*background-color: yellow;*/
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  width: 100%;
-}
-
-.footer_left {
-  /*background-color: chocolate;*/
-  width: 24%;
-}
-
-.footer_center {
-  /*background-color: crimson;*/
-  width: 48%;
-}
-
-.footer_right {
-  /*background-color: darkgreen;*/
-  width: 24%;
-}
-
-.site_inc {
-  font-size: 2.2vw;
-  line-height: 3.5vmax;
-}
-
-.footer_contents {
-  font-size: 2vw;
-  line-height: 3.5vmax;
-}
-
 
 /* PC用デザイン */
+@media (orientation: landscape), (min-width: 1024px){
+  header {
+    background-color: pink;
+    color: black;
+    height: 25vmin;
+    padding: 0.5vmin;
+    width: 100%; 
+  }
+
+  .header_wrapper {
+    background-color: aqua;
+    padding: 0.5vmin 5vmin;
+    text-align: center;
+    width: 100%;
+  }
+
+  .header_title {
+    background-color: darkred;
+    font-size: 12vmin;
+    font-weight: bold;
+    line-height: 23vmin;
+    text-align: left;
+    width: 60vw;
+  }
+
+  .main {
+    background-color: white;
+    height: 70vh;
+    margin-top: 0.5vmin;
+    padding: 0.5vmin;
+    width: 100%; 
+  }
+
+  .main_wrapper {
+    background-color: green;
+    margin: 0.5vh 1vw;
+    text-align: center;
+  }
+
+  .main_container {
+    background-color: yellow;
+    border: 2px solid rgb(72, 72, 72);
+    display: flex;
+    justify-content: space-around;
+    margin: 0 1vw;
+    padding: 2vh 2vw;
+  }
+
+  .main_left {
+    background-color: palevioletred;
+    width: 30%;
+  }
+
+  .main_right {
+    background-color: skyblue;
+    width: 60%;
+  }
+
+  .main_button {
+    background-color: beige;
+  }
+
+  footer {
+    background-color: black;
+    height: 3.5vmax;
+    width: 100%; 
+  }
+｝
+
+
+/*
 @media (min-width: 1024px){
   header {
     background-color: black;
@@ -157,7 +165,7 @@ footer {
   }
 
   .header_wrapper {
-    /*background-color: aqua;*/
+    background-color: aqua;
     display: flex;
     justify-content: space-around;
     padding: 0.5vh 0;
@@ -165,17 +173,17 @@ footer {
   }
 
   .header_left {
-    /*background-color: blue;*/
+    background-color: blue;
     width: 38%;
   }
 
   .header_center {
-    /*background-color: chartreuse;*/
+    background-color: chartreuse;
     width: 20%;
   }
 
   .header_right {
-    /*background-color: coral;*/
+    background-color: coral;
     width: 38%;
   }
 
@@ -198,20 +206,20 @@ footer {
   }
 
   .main_wrapper {
-    /*background-color: green;*/
+    background-color: green;
     margin: 0 1vw;
     text-align: center;
   }
 
   .main_message {
-    /*background-color: yellow;*/
+    background-color: yellow;
     margin: 0.5vh 0;
     padding: 0.2vh 1.5vw;
     text-align: left;
   }
   
   .main_message p {
-    /*background-color: pink;*/
+    background-color: pink;
     color: red;
     font-size: 1.2vw;
     line-height: 1.2vw;
@@ -219,19 +227,19 @@ footer {
   }
 
   .main_title {
-    /*background-color: orange;*/
+    background-color: orange;
     margin: 0.5vh 0;
     text-align: left;
   }
 
   .main_title span{
-    /*background-color: line;*/
+    background-color: line;
     font-size: 2.2vw;
     font-weight: bold;
   }
 
   .main_contents {
-    /*background-color: turquoise;*/
+    background-color: turquoise;
     font-size: 2vw;
     margin: 0.5vh 0 0 0;
   }
@@ -244,7 +252,7 @@ footer {
   }
 
   .footer_wrapper {
-    /*background-color: yellow;*/
+    background-color: yellow;
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -252,17 +260,17 @@ footer {
   }
 
   .footer_left {
-    /*background-color: chocolate;*/
+    background-color: chocolate;
     width: 24%;
   }
 
   .footer_center {
-    /*background-color: crimson;*/
+    background-color: crimson;
     width: 48%;
   }
 
   .footer_right {
-    /*background-color: darkgreen;*/
+    background-color: darkgreen;
     width: 24%;
   }
 
@@ -276,5 +284,5 @@ footer {
     line-height: 8vh;
   }  
 }
-
+*/
 
