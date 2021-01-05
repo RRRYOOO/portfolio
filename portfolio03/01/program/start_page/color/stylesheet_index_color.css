@@ -11,21 +11,21 @@ body {
 
 /* スマートフォン(Portfolio)用デザイン */
 header {
-  /*background-color: pink;*/
+  background-color: pink;
   color: black;
   padding: 0.5vh 0.5vw;
   width: 100%; 
 }
 
 .header_wrapper {
-  /*background-color: aqua;*/
+  background-color: aqua;
   padding: 0.5vh 3vw;
   text-align: center;
   width: 100%;
 }
 
 .header_title {
-  /*background-color: coral;*/
+  background-color: coral;
   font-size: 12vw;
   font-weight: bold;
   text-align: left;
@@ -33,25 +33,25 @@ header {
 }
 
 .main {
-  /*background-color: white;*/
+  background-color: white;
   padding: 0.5vh 0.5vw;
   width: 100%; 
 }
 
 .main_wrapper {
-  /*background-color: green;*/
+  background-color: green;
   padding: 5vh 3vw;
   text-align: center;
 }
 
 .main_container {
-  /*background-color: yellow;*/
+  background-color: yellow;
   border: 2px solid rgb(72, 72, 72);
   padding: 5vh 2vw;
 }
 
 .main_left {
-  /*background-color: palevioletred;*/
+  background-color: palevioletred;
   color: rgb(72, 72, 72);
   font-size: 18vw;
   margin-bottom: 5vh;
@@ -59,13 +59,13 @@ header {
 }
 
 .main_right {
-  /*background-color: skyblue;*/
+  background-color: skyblue;
   text-align: center;
   width: 100%;
 }
 
 .main_button {
-  /*background-color: beige;*/
+  background-color: beige;
   display: inline-block;
   margin: 2vh 0;
   padding: 0.5vh 0.5vw;
@@ -118,7 +118,7 @@ header {
 }
 
 footer {
-  /*background-color: black;*/
+  background-color: black;
   height: 3vh;
   width: 100%; 
 }
@@ -127,21 +127,21 @@ footer {
 /* PC用、スマートフォン(Landscape)用デザイン */
 @media (min-width: 1024px), (orientation: landscape) {
   header {
-    /*background-color: pink;*/
+    background-color: pink;
     color: black;
     padding: 0.5vh 0.5vw;
     width: 100%; 
   }
 
   .header_wrapper {
-    /*background-color: aqua;*/
+    background-color: aqua;
     padding: 0.5vh 3vw;
     text-align: center;
     width: 100%;
   }
 
   .header_title {
-    /*background-color: darkred;*/
+    background-color: darkred;
     font-size: 6vw;
     font-weight: bold;
     text-align: left;
@@ -149,19 +149,19 @@ footer {
   }
 
   .main {
-    /*background-color: white;*/
+    background-color: white;
     padding: 0.5vh 0.5vw;
     width: 100%; 
   }
 
   .main_wrapper {
-    /*background-color: green;*/
+    background-color: green;
     padding: 5vh 3vw;
     text-align: center;
   }
 
   .main_container {
-    /*background-color: yellow;*/
+    background-color: yellow;
     border: 2px solid rgb(72, 72, 72);
     display: flex;
     justify-content: space-around;
@@ -169,7 +169,7 @@ footer {
   }
 
   .main_left {
-    /*background-color: palevioletred;*/
+    background-color: palevioletred;
     color: rgb(72, 72, 72);
     font-size: 10vw;
     margin-bottom: 0;
@@ -178,13 +178,13 @@ footer {
   }
 
   .main_right {
-    /*background-color: skyblue;*/
+    background-color: skyblue;
     text-align: center;
     width: 65%;
   }
 
   .main_button {
-    /*background-color: beige;*/
+    background-color: beige;
     display: inline-block;
     margin: 5vh 0;
     padding: 0.5vh 0.5vw;
@@ -228,7 +228,7 @@ footer {
   }
 
   footer {
-    /*background-color: black;*/
+    background-color: black;
     height: 3.5vh;
     width: 100%; 
   }
