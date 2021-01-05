@@ -6,7 +6,7 @@
   $_SESSION = array();
 
   // ログイン画面に遷移
-  header('Location: ../user_login/03_01_user_login.html');
+  header('Location: ../user_login/user_login.html');
   exit;
 
 ?>

@@ -1,8 +1,8 @@
 <?php
   // phpファイルの読み込み
-  require_once('../database_connect/03_01_database_connect.php');
-  require_once('../database_connect/03_01_department_data_class.php');
-  require_once('../database_connect/03_01_registered_user_data_class.php');
+  require_once('../database_connect/database_connect.php');
+  require_once('../database_connect/department_data_class.php');
+  require_once('../database_connect/registered_user_data_class.php');
 
   // 入力されたユーザ登録情報のチェックとユーザ登録を行うクラスを定義
   class UserRegistration {

@@ -1,7 +1,7 @@
 <?php
   // phpファイルの読み込み
-  require_once('03_01_database_connect.php');
-  require_once('03_01_department_data_class.php');
+  require_once('database_connect.php');
+  require_once('department_data_class.php');
 
   // 登録されたユーザ情報を取り出すクラスを定義
   class RegisteredUserData {

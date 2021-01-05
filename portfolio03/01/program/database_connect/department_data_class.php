@@ -1,7 +1,7 @@
 
 <?php
   // phpファイルの読み込み
-  require_once('03_01_database_connect.php');
+  require_once('database_connect.php');
 
   // 部署情報を扱うクラスを定義
   class DepartmentData {

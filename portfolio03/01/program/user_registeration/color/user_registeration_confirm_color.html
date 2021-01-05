@@ -1,6 +1,6 @@
 <?php
   // phpファイルの読み込み
-  require_once('03_01_user_registeration_class.php');
+  require_once('user_registeration_class.php');
 
   // セッションスタート
   session_start();
@@ -9,7 +9,7 @@
   if($_POST['RedirectFlag'] == 1){
     // リダイレクトフラグをセッションに保存してユーザ登録画面へ遷移
     $_SESSION['RegistrationRedirectFlag'] = 1;
-    header('Location: ./03_01_user_registeration.html');
+    header('Location: ./user_registeration.html');
     exit;
   }
 
@@ -23,7 +23,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、ユーザ登録画面に戻る
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
-    header('Location: ./03_01_user_registeration.html');
+    header('Location: ./user_registeration.html');
     exit;
   }
   // 確認合格フラグのセッションを破棄
@@ -39,8 +39,8 @@
     <!-- ②ページタイトル -->
     <title>ToDoList</title>
     <!-- ③スタイルシートの読み込み -->
-    <link rel="stylesheet" href="../common/03_01_stylesheet_common.css">
-    <link rel="stylesheet" href="03_01_user_registeration_confirm.css">
+    <link rel="stylesheet" href="../common/stylesheet_common.css">
+    <link rel="stylesheet" href="user_registeration_confirm_color.css">
     <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -111,14 +111,14 @@
           <div class="register_input">
             <div class="input_button">
             <!-- 修正ボタン（押すとリダイレクトフラグがポストされ、本プログラムのリダイレクト時に上部のPHP内で受信し、セッションに保存後にユーザ登録画面に遷移する） -->
-            <form method="post" action="03_01_user_registeration_confirm.html">
+            <form method="post" action="user_registeration_confirm.html">
               <input type="hidden" name="RedirectFlag" value="1">
               <input class="redirect_button"  type="submit" value="修正">
               </form>
             </div>
             <div class="input_button">
               <!-- 確定ボタン (押すとユーザ登録が実行される) -->
-              <button class="register_button" onclick="location.href='03_01_user_registeration_execute.php'">確定</button>
+              <button class="register_button" onclick="location.href='user_registeration_execute.php'">確定</button>
             </div>
           </div>
         </div>

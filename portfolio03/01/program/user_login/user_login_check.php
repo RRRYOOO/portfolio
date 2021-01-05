@@ -1,6 +1,6 @@
 <?php 
   // phpファイルの読み込み
-  require_once('03_01_user_login_class.php');
+  require_once('user_login_class.php');
   // セッションスタート
   session_start();
 
@@ -19,20 +19,20 @@
     $_SESSION['LoginTempUser'] = $temporaryUser;
     $_SESSION['LoginRedirectFlag'] = 1;
     $_SESSION['LoginErrorFlag'] = 1;
-    header('Location: ./03_01_user_login.html');
+    header('Location: ./user_login.html');
     exit;
   // エラーがない場合
   } else if($errorFlag == 0) {
     // ログインに使用したセッション情報を破棄
     $_SESSION = array();
     // phpファイルの読み込み
-    require_once('03_01_present_login_user_class.php');
+    require_once('present_login_user_class.php');
     // 確認したユーザ情報をログインユーザ情報として設定
     $loginUser = new PresentLoginUser($temporaryUser->getTempUserMailAddress());
     // ログインユーザ情報をセッションに保存
     $_SESSION['LoginUser'] = $loginUser;
     // ToDo表示画面へ遷移
-    header('Location: ../todo_show/03_01_todo_show.html');
+    header('Location: ../todo_show/todo_show.html');
     exit;
   // その他何かしらのエラーが発生した場合
   } else {
@@ -41,7 +41,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、ユーザ登録画面に戻る
     $_SESSION['LoginRedirectFlag'] = 1;
     $_SESSION['LoginErrorFlag'] = 1;
-    header('Location: ./03_01_user_login.html');
+    header('Location: ./user_login.html');
     exit;
   }
 ?>

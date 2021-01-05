@@ -1,6 +1,6 @@
 <?php
   // phpファイルの読み込み
-  require_once('../database_connect/03_01_registered_user_data_class.php');
+  require_once('../database_connect/registered_user_data_class.php');
 
   // 入力されたユーザログイン情報のチェックを行うクラスを定義
   class UserLogin {
