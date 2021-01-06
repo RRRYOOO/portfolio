@@ -5,8 +5,8 @@
   // セッション情報を破棄
   $_SESSION = array();
 
-  // ログイン画面に遷移
-  header('Location: ../user_login/user_login.html');
+  // スタート画面に遷移
+  header('Location: ../start_page/index.html');
   exit;
 
 ?>
