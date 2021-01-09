@@ -26,7 +26,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、ユーザ登録画面に戻る
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
-    header('Location: ./user_registration.html');
+    header('Location: ../pages/user_registration.html');
     exit;
   // エラーがない場合
   } else if($errorFlag == 0) {
@@ -34,7 +34,7 @@
     $_SESSION['RegistrationCheckPassFlag'] = 1;
     // エラーフラグのセッション情報を解放し、確認画面へ遷移
     unset($_SESSION['RegistrationErrorFlag']);
-    header('Location: ./user_registration_confirm.html');
+    header('Location: ../pages/user_registration_confirm.html');
     exit;
   // その他何かしらのエラーが発生した場合  
   } else {
@@ -43,7 +43,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、ユーザ登録画面に戻る
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
-    header('Location: ./user_registration.html');
+    header('Location: ../pages/user_registration.html');
     exit;
   }
 ?>

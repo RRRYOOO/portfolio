@@ -1,7 +1,7 @@
 <?php
   // phpファイルの読み込み
   require_once('../database_connect/database_connect.php');
-  require_once('user_registration_class.php');
+  require_once('../user_registration/user_registration_class.php');
   
   // セッションスタート
   session_start();
@@ -9,7 +9,7 @@
   // ログイン状態の場合、ToDo表示画面へ遷移（ログイン状態のユーザがアクセスしてきた場合を想定）
   if(!empty($_SESSION['LoginUser'])) {
     // ToDo表示画面へ遷移
-    header('Location: ../todo_show/todo_show.html');
+    header('Location: todo_show.html');
     exit;
   }
 
@@ -56,8 +56,8 @@
     <!-- ②ページタイトル -->
     <title>ToDoList</title>
     <!-- ③スタイルシートの読み込み -->
-    <link rel="stylesheet" href="../common/stylesheet_common.css">
-    <link rel="stylesheet" href="user_registration.css">
+    <link rel="stylesheet" href="./css/stylesheet_common.css">
+    <link rel="stylesheet" href="./css/user_registration.css">
     <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -97,7 +97,7 @@
       <div class="main_contents">
         <div class="main_container">
           <!-- 入力フォーム -->
-          <form method="post" action="user_registration_check.php">
+          <form method="post" action="../user_registration/user_registration_check.php">
             <div class="name">
               <!-- 姓を入力 -->
               <div class="input_name">
@@ -175,12 +175,12 @@
           </form>
           <!-- ログイン画面へのリンク -->
           <div class="link_to_login">
-            <a href="../user_login/user_login.html"><span class="link">※既にアカウントをお持ちの場合はこちら</span></a>
+            <a href="user_login.html"><span class="link">※既にアカウントをお持ちの場合はこちら</span></a>
           </div>
         </div>
         <!-- スタート画面へのリンク -->
         <div class="link_to_start">
-          <a href="../start_page/index.html"><span class="link">スタート画面へ戻る</span></a>
+          <a href="index.html"><span class="link">スタート画面へ戻る</span></a>
         </div>
       </div>
     </div>

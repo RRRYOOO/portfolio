@@ -1,3 +1,14 @@
+<?php
+  // セッションスタート
+  session_start();
+
+  // ログイン状態の場合、ToDo表示画面へ遷移（ログイン状態のユーザがアクセスしてきた場合を想定）
+  if(!empty($_SESSION['LoginUser'])) {
+    // ToDo表示画面へ遷移
+    header('Location: ../todo_show/todo_show.html');
+    exit;
+  }
+  ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -7,7 +18,7 @@
     <!-- ②ページタイトル -->
     <title>ToDoList</title>
     <!-- ③スタイルシートの読み込み -->
-    <link rel="stylesheet" href="stylesheet_index_color.css">
+    <link rel="stylesheet" href="./css/stylesheet_index.css">
     <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -29,7 +40,7 @@
         <div class="main_right">
           <div class="main_button">
             <!-- 利用者ボタン (押すとユーザログイン画面に遷移する) -->
-            <button class="select_button user_button" onclick="location.href='../user_login/user_login.html'"><span class="fas fa-user"></span>利用者としてログイン</button>
+            <button class="select_button user_button" onclick="location.href='user_login.html'"><span class="fas fa-user"></span>利用者としてログイン</button>
           </div>
           <div class="main_button">
             <!-- 管理者ボタン (押すと管理者ログイン画面に遷移する) -->

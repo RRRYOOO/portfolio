@@ -6,7 +6,7 @@
   $_SESSION = array();
 
   // スタート画面に遷移
-  header('Location: ../start_page/index.html');
+  header('Location: ../pages/index.html');
   exit;
 
 ?>

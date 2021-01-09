@@ -1,6 +1,6 @@
 <?php
   // phpファイルの読み込み
-  require_once('user_registration_class.php');
+  require_once('../user_registration/user_registration_class.php');
 
   // セッションスタート
   session_start();
@@ -9,7 +9,7 @@
   if($_POST['RedirectFlag'] == 1){
     // リダイレクトフラグをセッションに保存してユーザ登録画面へ遷移
     $_SESSION['RegistrationRedirectFlag'] = 1;
-    header('Location: ./user_registration.html');
+    header('Location: user_registration.html');
     exit;
   }
 
@@ -23,7 +23,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、ユーザ登録画面に戻る
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
-    header('Location: ./user_registration.html');
+    header('Location: user_registration.html');
     exit;
   }
   // 確認合格フラグのセッションを破棄
@@ -39,8 +39,8 @@
     <!-- ②ページタイトル -->
     <title>ToDoList</title>
     <!-- ③スタイルシートの読み込み -->
-    <link rel="stylesheet" href="../common/stylesheet_common.css">
-    <link rel="stylesheet" href="user_registration_confirm_color.css">
+    <link rel="stylesheet" href="./css/stylesheet_common.css">
+    <link rel="stylesheet" href="./css/user_registration_confirm.css">
     <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -118,7 +118,7 @@
             </div>
             <div class="input_button">
               <!-- 確定ボタン (押すとユーザ登録が実行される) -->
-              <button class="register_button" onclick="location.href='user_registration_execute.php'">確定</button>
+              <button class="register_button" onclick="location.href='../user_registration/user_registration_execute.php'">確定</button>
             </div>
           </div>
         </div>
