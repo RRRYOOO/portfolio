@@ -51,9 +51,24 @@ header {
 }
 
 .header_contents {
+  color: white;
   font-size: 2vw;
   line-height: 4vmax;
 }
+
+.header_link {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+.header_link:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.header_link:focus {
+  color: rgba(255, 255, 255, 0.1);
+}
+
 
 .main {
   background-color: white;
@@ -181,8 +196,22 @@ footer {
   }
 
   .header_contents {
+    color: white;
     font-size: 1.7vw;
     line-height: 8vh;
+  }
+
+  .header_link {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+  }
+  
+  .header_link:hover {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .header_link:focus {
+    color: rgba(255, 255, 255, 0.1);
   }
 
   .main {

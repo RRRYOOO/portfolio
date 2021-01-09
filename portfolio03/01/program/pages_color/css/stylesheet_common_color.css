@@ -51,8 +51,10 @@ header {
 }
 
 .header_contents {
+  color: white;
   font-size: 2vw;
   line-height: 4vmax;
+  text-decoration: none;
 }
 
 .main {
@@ -181,8 +183,10 @@ footer {
   }
 
   .header_contents {
+    color: white;
     font-size: 1.7vw;
     line-height: 8vh;
+    text-decoration: none;
   }
 
   .main {
