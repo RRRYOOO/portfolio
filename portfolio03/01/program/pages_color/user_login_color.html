@@ -8,7 +8,7 @@
   // ログイン状態の場合、ToDo表示画面へ遷移（ログイン状態のユーザがアクセスしてきた場合を想定）
   if(!empty($_SESSION['LoginUser'])) {
     // ToDo表示画面へ遷移
-    header('Location: todo_show.html');
+    header('Location: .todo_show/todo_show.html');
     exit;
   }
 
@@ -56,13 +56,17 @@
   <header>
     <div class="header_wrapper">
       <div class="header_left">
-        <span class="header_contents"></span>
+        <div class="header_contents">
+        </div>
       </div>
       <div class="header_center">
         <span class="site_title">ToDoList</span>
       </div>
       <div class="header_right">
-        <span class="header_contents"></span>
+        <div class="header_contents">
+          <a href="" class="header_link">
+          </a>
+        </div>
       </div>
     </div>    
   </header>
@@ -105,13 +109,13 @@
           </form>
           <!-- ユーザ登録画面へのリンク -->
           <div class="link_to_login">
-          <a href="user_registration_color.html"><span class="link">※アカウントをお持ちでない場合はこちら</span></a>
+          <a href="./user_registration.html"><span class="link">※アカウントをお持ちでない場合はこちら</span></a>
           </div>
         </div>
       </div>
       <!-- スタート画面へのリンク -->
       <div class="link_to_start">
-      <a href="index_color.html"><span class="link">スタート画面へ戻る</span></a>
+      <a href="./index.html"><span class="link">スタート画面へ戻る</span></a>
       </div>
     </div>
   </div>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -16,13 +14,17 @@
   <header>
     <div class="header_wrapper">
       <div class="header_left">
-        <span class="header_contents"></span>
+        <div class="header_contents">
+        </div>
       </div>
       <div class="header_center">
         <span class="site_title">ToDoList</span>
       </div>
       <div class="header_right">
-        <span class="header_contents"></span>
+        <div class="header_contents">
+          <a href="" class="header_link">
+          </a>
+        </div>
       </div>
     </div>    
   </header>
@@ -54,7 +56,7 @@
           <!-- メールアドレスの入力値を表示 -->
           <div class="input_contents">
             <span class="input_item">メールアドレス</span>
-            <span class="input_long"><?php echo "XXXX@XXX.XX" ?></span>
+            <span class="input_long"><?php echo "XXX@XXXX.XX" ?></span>
           </div>
           <!-- パスワードの入力値を表示-->
           <div class="input_contents">
@@ -80,14 +82,14 @@
           <div class="register_input">
             <div class="input_button">
             <!-- 修正ボタン（押すとリダイレクトフラグがポストされ、本プログラムのリダイレクト時に上部のPHP内で受信し、セッションに保存後にユーザ登録画面に遷移する） -->
-            <form method="post" action="user_registration_confirm_color.html">
+            <form method="post" action="user_registration_confirm.html">
               <input type="hidden" name="RedirectFlag" value="1">
               <input class="redirect_button"  type="submit" value="修正">
               </form>
             </div>
             <div class="input_button">
               <!-- 確定ボタン (押すとユーザ登録が実行される) -->
-              <button class="register_button" onclick="location.href=''">確定</button>
+              <button class="register_button" onclick="location.href='../user_registration/user_registration_execute.php'">確定</button>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@
   // ログアウト状態の場合、ログイン画面へ遷移（ログアウト状態のユーザがアクセスしてきた場合を想定）
   if(empty($_SESSION['LoginUser'])) {
     // ログイン画面へ遷移
-    header('Location: user_login.html');
+    header('Location: user_login_color.html');
     exit;
   }
 
@@ -32,15 +32,22 @@
   <header>
     <div class="header_wrapper">
       <div class="header_left">
-        <a href="../user_login/user_logout.php"><span class="header_contents">Logout</span></a>
+        <div class="header_contents">
+          <span class="fas fa-user"></span>
+          <span> 田中 太郎</span>
+        </div>
       </div>
       <div class="header_center">
         <span class="site_title">ToDoList</span>
       </div>
       <div class="header_right">
-        <span class="header_contents">header_right</span>
+        <div class="header_contents">
+          <a href="../user_login/user_logout.php" class="header_link">
+            <span>ログアウト</span>
+          </a>
+        </div>
       </div>
-    </div>    
+    </div>
   </header>
   <div class="main">
     <div class="main_wrapper">
