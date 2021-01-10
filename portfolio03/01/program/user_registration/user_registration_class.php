@@ -365,7 +365,7 @@
         }
       }
       // ユーザ登録の実行が失敗した場合
-      if(is_null($this->userRegistrationExecuteCompFlag)) {
+      if(empty($this->userRegistrationExecuteCompFlag)) {
         // エラー処理
         $this->setErrorProcedure();
       }
