@@ -1,3 +1,38 @@
+<?php
+  // phpファイルの読み込み
+  require_once('../user_login/present_login_user_class.php');
+  require_once('../todo_registration/todo_registration_class.php');
+
+  // セッションスタート
+  session_start();
+
+  // 修正ボタン押下によるリダイレクトの場合、
+  if($_POST['RedirectFlag'] == 1){
+    // リダイレクトフラグをセッションに保存してToDo登録画面へ遷移
+    $_SESSION['RegistrationRedirectFlag'] = 1;
+    header('Location: todo_registration.html');
+    exit;
+  }
+
+  // ログインユーザに関するセッション情報を取得
+  $loginUser = $_SESSION['LoginUser'] ;
+
+  // 前回の入力値で作成したインスタンスを受け取る(入力チェック済み)
+  $temporaryTodo = $_SESSION['RegistrationTempTodo'];
+
+  // 入力されたTodo登録情報の確認が合格していない場合（ToDo登録確認画面での更新ボタン押下を想定）
+  if($_SESSION['RegistrationCheckPassFlag'] != 1) {
+    // エラー処理を実行
+    $temporaryTodo->setErrorProcedure();
+    // リダイレクトフラグとエラーフラグをセッションに保存し、ToDo登録画面に戻る
+    $_SESSION['RegistrationRedirectFlag'] = 1;
+    $_SESSION['RegistrationErrorFlag'] = 1;
+    header('Location: todo_registration.html');
+    exit;
+  }
+  // 確認合格フラグのセッションを破棄
+  unset($_SESSION['RegistrationCheckPassFlag']);
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -17,7 +52,7 @@
       <div class="header_left">
         <div class="header_contents">
           <span class="fas fa-user"></span>
-          <span> 田中 太郎</span>
+          <span><?php echo $loginUser->getUserLastName().' '.$loginUser->getUserFirstName() ?></span>
         </div>
       </div>
       <div class="header_center">
@@ -48,28 +83,28 @@
           <!-- タイトルの入力値を表示 -->
           <div class="input_contents">
             <span class="input_item">タイトル</span>
-            <span class="input_long"><?php echo "XXXX" ?></span>
+            <span class="input_long"><?php echo $temporaryTodo->getTempTodoTitle() ?></span>
           </div>
           <!-- 内容の入力値を表示 -->
           <div class="input_contents">
             <span class="input_item">内容</span>
-            <span class="textarea_long"><?php echo "XXXXXXXXXXXXX<br>XXXXXXXXXXXXXXXXXXXXXXXXXXXX<br>XXXXXXXXXXXXXX<br>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ?></span>
+            <span class="textarea_long"><?php echo $temporaryTodo->getTempTodoContent() ?></span>
           </div>
           <div class="input_selects">
             <div class="input_split">
               <!-- 期限の選択値を表示 -->
               <span class="input_item">期限</span>
-              <span class="input_short"><?php echo "YYYY/MM/DD" ?></span>
+              <span class="input_short"><?php echo $temporaryTodo->getTempTodoDeadline() ?></span>
             </div> 
             <div class="input_split">
               <!-- 難易度の選択値を表示 -->
               <span class="input_item">難易度</span>                                   
-              <span class="input_short"><?php echo "X" ?></span>
+              <span class="input_short"><?php echo $temporaryTodo->getTempTodoDifficulty() ?></span>
             </div>
             <div class="input_split">
               <!-- 重要度の選択値を表示 -->
               <span class="input_item">重要度</span>                                             
-              <span class="input_short"><?php echo "X" ?></span>
+              <span class="input_short"><?php echo $temporaryTodo->getTempTodoImportance() ?></span>
             </div>
           </div>
           <!-- ボタン -->

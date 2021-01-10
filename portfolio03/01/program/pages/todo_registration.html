@@ -1,26 +1,13 @@
-<!--<?php
+<?php
   // phpファイルの読み込み
-  require_once('../database_connect/database_connect.php');
-  require_once('../user_registration/user_registration_class.php');
+  require_once('../user_login/present_login_user_class.php');
+  require_once('../todo_registration/todo_registration_class.php');
   
   // セッションスタート
   session_start();
 
-  // ログイン状態の場合、ToDo表示画面へ遷移（ログイン状態のユーザがアクセスしてきた場合を想定）
-  if(!empty($_SESSION['LoginUser'])) {
-    // ToDo表示画面へ遷移
-    header('Location: todo_show.html');
-    exit;
-  }
-
-  // ログイン画面の入力情報で作成したセッション情報を破棄（ログイン画面から遷移してきたことを想定）
-  unset($_SESSION['LoginTempUser'], $_SESSION['LoginRedirectFlag'], $_SESSION['LoginErrorFlag']);
-
-  // データベースに接続
-  $dbh = DatabaseConnect::getDbh();
-  // 部署データを取得
-  $sql = 'SELECT * FROM department';
-  $departments = $dbh->query($sql);
+  // ログインユーザに関するセッション情報を取得
+  $loginUser = $_SESSION['LoginUser'] ;
 
   // リダイレクトかどうか判断
   $redirectFlag = 0;
@@ -29,7 +16,7 @@
     // リダイレクトフラグの値を受け取る
     $redirectFlag = $_SESSION['RegistrationRedirectFlag'];
     // 前回の入力値で作成したインスタンスを受け取る
-    $temporaryUser = $_SESSION['RegistrationTempUser'];
+    $temporaryTodo = $_SESSION['RegistrationTempTodo'];
     // エラーによるリダイレクトかどうかを判断
     $errorFlag = 0;
     // エラーによるリダイレクトの場合
@@ -40,10 +27,10 @@
   // リダイレクトでない場合
   } else {
     // 前回の入力値で作成したインスタンスのセッション情報を破棄
-    unset($_SESSION['RegistrationTempUser']);
+    unset($_SESSION['RegistrationTempTodo']);
     // ダミーの入力データでインスタンスを作成
     // ※メソッドの呼び出しでエラーが発生し停止するのを防ぐため
-    $temporaryToDo = new UserRegistration(null,null,null,null,null,null,null);
+    $temporaryTodo = new TodoRegistration(null,null,null,null,null,null);
   }
 ?>
 -->
@@ -66,7 +53,7 @@
       <div class="header_left">
         <div class="header_contents">
           <span class="fas fa-user"></span>
-          <span> 田中 太郎</span>
+          <span><?php echo $loginUser->getUserLastName().' '.$loginUser->getUserFirstName() ?></span>
         </div>
       </div>
       <div class="header_center">
@@ -86,7 +73,14 @@
       <div class="main_message"> 
         <!-- エラーによりリダイレクトされた場合は、エラーメッセージを表示 -->
         <?php
-          echo "メッセージ";          
+          if($errorFlag == 1) {            
+            echo '<p>'.$temporaryTodo->errorMessageTodoTitle.'</p>';
+            echo '<p>'.$temporaryTodo->errorMessageTodoContent.'</p>';
+            echo '<p>'.$temporaryTodo->errorMessageTodoDeadline.'</p>';
+            echo '<p>'.$temporaryTodo->errorMessageTodoDifficulty.'</p>';
+            echo '<p>'.$temporaryTodo->errorMessageTodoImportance.'</p>';
+            echo '<p>'.$temporaryTodo->errorMessageRegistration.'</p>';
+          }
         ?>
       </div>
       <div class="main_title">
@@ -100,41 +94,41 @@
             <div class="input_contents">
               <span class="input_item">タイトル</span>
                 <!-- エラーによりリダイレクトされた場合は、前回入力値を表示（次項目がエラーだった場合はクリアされる） -->
-              <input class="input_long" name="title" value="<?php echo XXXX ?>">
+              <input class="input_long" name="Title" value="<?php echo $temporaryTodo->getTempTodoTitle() ?>">
             </div>
             <!-- 内容を入力 -->
             <div class="input_contents">
               <span class="input_item">内容</span>
                 <!-- エラーによりリダイレクトされた場合は、前回入力値を表示（次項目がエラーだった場合はクリアされる） -->
-              <textarea class="textarea_long" name="content"></textarea>
+              <textarea class="textarea_long" name="Content"><?php echo $temporaryTodo->getTempTodoContent() ?></textarea>
             </div>
             <div class="input_selects">
               <div class="input_split">
                 <!-- 期限を選択 -->
                 <span class="input_item">期限</span>
                 <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
-                <input class="input_short"  name="deadline" type="date" value="">   
+                <input class="input_short"  name="Deadline" type="date" value="<?php echo $temporaryTodo->getTempTodoDeadline() ?>">   
               </div> 
               <div class="input_split">
                 <!-- 難易度を選択 -->
                 <span class="input_item">難易度</span>                                   
-                <select class="input_short" name="difficulty">
+                <select class="input_short" name="Difficulty">
                   <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
                   <option value=""></option>
-                  <option value="1">低</option>
-                  <option value="2">中</option>
-                  <option value="3">高</option>
+                  <option value="1" <?php if($temporaryTodo->getTempTodoDifficulty() == '低') { echo 'selected'; } ?>>低</option>
+                  <option value="2" <?php if($temporaryTodo->getTempTodoDifficulty() == '中') { echo 'selected'; } ?>>中</option>
+                  <option value="3" <?php if($temporaryTodo->getTempTodoDifficulty() == '高') { echo 'selected'; } ?>>高</option>
                 </select>
               </div>
               <div class="input_split">
                 <!-- 重要度を選択 -->
                 <span class="input_item">重要度</span>                                             
-                <select class="input_short" name="importance">
+                <select class="input_short" name="Importance">
                   <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
                   <option value=""></option>
-                  <option value="1">低</option>
-                  <option value="2">中</option>
-                  <option value="3">高</option>
+                  <option value="1" <?php if($temporaryTodo->getTempTodoImportance() == '低') { echo 'selected'; } ?>>低</option>
+                  <option value="2" <?php if($temporaryTodo->getTempTodoImportance() == '中') { echo 'selected'; } ?>>中</option>
+                  <option value="3" <?php if($temporaryTodo->getTempTodoImportance() == '高') { echo 'selected'; } ?>>高</option>
                 </select>
               </div>
             </div>
@@ -167,16 +161,14 @@
 </body>
 </html>
 
-<!--
 <?php
   // 前回の入力情報で作成したインスタンスのセッション情報を破棄し、ダミーのインスタンスを作成
   // ※メソッドの呼び出しでエラーが発生し停止するのを防ぐため
-  $_SESSION['RegistrationTempUser'] = new UserRegistration(null,null,null,null,null,null,null);
+  $_SESSION['RegistrationTempTodo'] = new TodoRegistration(null,null,null,null,null,null);
   // リダイレクトフラグのセッション情報を破棄
   unset($_SESSION['RegistrationRedirectFlag']);
   // エラーフラグのセッション情報を破棄
   unset($_SESSION['RegistrationErrorFlag']);
   // 確認合格フラグのセッション情報を破棄
-  unset($_SESSION['RegistrationCheckPassFlag']);
+  // unset($_SESSION['RegistrationCheckPassFlag']);
 ?>
--->

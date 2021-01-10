@@ -13,7 +13,14 @@
   }
 
   // ログインユーザに関するセッション情報を取得
-  $loginUser = $_SESSION['LoginUser'] ;
+  $loginUser = $_SESSION['LoginUser'];
+
+  // ToDo登録完了メッセージのセッション情報を取得
+  $registrationCompMessage = null;
+  if(!empty($_SESSION['RegisterationComp'])) {
+    $registrationCompMessage = $_SESSION['RegisterationComp'];
+    unset($_SESSION['RegisterationComp']);
+  }
 
 ?>
 
@@ -34,7 +41,7 @@
       <div class="header_left">
         <div class="header_contents">
           <span class="fas fa-user"></span>
-          <span> 田中 太郎</span>
+          <span><?php echo $loginUser->getUserLastName().' '.$loginUser->getUserFirstName() ?></span>
         </div>
       </div>
       <div class="header_center">
@@ -52,7 +59,7 @@
   <div class="main">
     <div class="main_wrapper">
       <div class="main_message">
-        <span>main_message</span>
+        <span><?php echo $registrationCompMessage ?></span>
       </div>
       <div class="main_title">
         <span>ToDo一覧</span>
