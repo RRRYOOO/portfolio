@@ -16,7 +16,7 @@
   // 前回の入力値で作成したインスタンスを受け取る(入力チェック済み)
   $temporaryUser = $_SESSION['RegistrationTempUser'];
 
-  // 入力されたユーザ登録報報の確認が合格していない場合（ユーザ登録確認画面での更新ボタン押下を想定）
+  // 入力されたユーザ登録情報の確認が合格していない場合（ユーザ登録確認画面での更新ボタン押下を想定）
   if($_SESSION['RegistrationCheckPassFlag'] != 1) {
     // エラー処理を実行
     $temporaryUser->setErrorProcedure();
