@@ -322,7 +322,7 @@
       $this->tempUserGender = null;
       $this->tempUserAge = null;
       $this->tempUserDepartment = null;
-      // エラーメッセージに関する変数
+      // エラーメッセージを破棄
       $this->errorMessageLastName = null;
       $this->errorMessageFirstName = null;
       $this->errorMessageMailAddress = null;
