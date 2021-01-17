@@ -1,0 +1,200 @@
+<?php
+  // phpファイルの読み込み
+  //require_once('../user_login/present_login_user_class.php');
+  
+  // セッションスタート
+  //session_start();
+
+  // ログアウト状態の場合、ログイン画面へ遷移（ログアウト状態のユーザがアクセスしてきた場合を想定）
+  //if(empty($_SESSION['LoginUser'])) {
+    // ログイン画面へ遷移
+    //header('Location: user_login.html');
+    //exit;
+  //}
+
+  // ログインユーザに関するセッション情報を取得
+  //$loginUser = $_SESSION['LoginUser'];
+
+  // ToDo登録完了メッセージのセッション情報を取得
+  //$registrationCompMessage = null;
+  //if(!empty($_SESSION['RegisterationCompMC:\Users\owner\Programming\portfolio\portfolio03\01\programessage'])) {
+    //$registrationCompMessage = $_SESSION['RegisterationCompMessage'];
+    //unset($_SESSION['RegisterationCompMessage']);
+  //}
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- ①文字コード -->
+    <meta charset="utf-8">
+    <!-- ②ページタイトル -->
+    <title>ToDoList</title>
+    <!-- ③スタイルシートの読み込み -->
+    <link rel="stylesheet" href="./css/stylesheet_common_color.css">
+    <link rel="stylesheet" href="./css/todo_show_color.css">
+    <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_left">
+        <div class="header_contents">
+          <span class="fas fa-user"></span>
+          <span><?php echo "田中 太郎"/*$loginUser->getUserLastName().' '.$loginUser->getUserFirstName()*/ ?></span>
+        </div>
+      </div>
+      <div class="header_center">
+        <span class="site_title">ToDoList</span>
+      </div>
+      <div class="header_right">
+        <div class="header_contents">
+          <a href="../user_login/user_logout.php" class="header_link">
+            <span>ログアウト</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <div class="main_wrapper">
+      <div class="main_message">
+        <p><?php echo $registrationCompMessage ?></p>
+      </div>
+      <div class="main_title">
+        <span>ToDo表示</span>
+      </div>
+      <div class="main_contents">
+        <div class="main_container">
+          <div class="show_orders">
+            <div class="todo_title">
+              <span>表示指定</span>
+            </div>
+            <div class="order_container">
+              <div class="show_order">
+                <div class="order_title">
+                  <span>期日</span>
+                </div>
+                <div class="order_items">
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- 期日の昇順の場合は"Order"に1を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=1>昇順</button>
+                    </form>
+                  </div>
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- 期日の降順の場合は"Order"に2を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=2>降順</button>
+                    </form>
+                  </div>                  
+                </div>
+              </div>
+              <div class="show_order">
+                <div class="order_title">
+                  <span>難易度</span>
+                </div>
+                <div class="order_items">
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- 難易度の昇順の場合は"Order"に3を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=3>昇順</button>
+                    </form>
+                  </div>
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- 難易度の降順の場合は"Order"に4を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=4>降順</button>
+                    </form>
+                  </div>                  
+                </div>
+              </div>
+              <div class="show_order">
+                <div class="order_title">
+                  <span>重要度</span>
+                </div>
+                <div class="order_items">
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- 重要度の昇順の場合は"Order"に5を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=5>昇順</button>
+                    </form>
+                  </div>
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- 重要度の降順の場合は"Order"に6を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=6>降順</button>
+                    </form>
+                  </div>                  
+                </div>
+              </div>
+              <div class="show_order">
+                <div class="order_title">
+                  <span>ステータス</span>               
+                </div>
+                <div class="order_items">
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- ステータスの昇順の場合は"Order"に7を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=7>昇順</button>
+                    </form>
+                  </div>
+                  <div class="order_item">
+                    <form method="post" action="">
+                      <!-- ステータスの降順の場合は"Order"に8を格納してPOSTする -->
+                      <button class="order_button" type="submit" name="Order" value=8>降順</button>
+                    </form>
+                  </div>                   
+                </div>
+              </div>                                          
+            </div>
+          </div>
+          <div class="todo_things">
+            <div class="todo_title">
+              <span>ToDo一覧</span>
+            </div>
+            <div class="todo_registration">
+              <!-- ToDo登録ページへ遷移 -->
+              <button class="registration_button" onclick="location.href='todo_registration.html'"></span>ToDo登録</button>
+            </div>            
+            <div class="todo_table">              
+              <table class="table">
+                <thead>
+                  <tr><th class="t1">タイトル</th><th class="t2">内容</th><th class="t3">期日</th><th class="t4">難易度</th><th class="t5">重要度</th><th class="t6">ステータス</th><th class="t7">操作</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">キャンセル</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>
+                  <tr><td class="t1 td_left">AAAAAAA</td><td class="t2 td_left">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>                                                    
+                  <?php echo '<tr><td class="t1 td_left">AA</td><td class="t2 td_left">BB</td><td class="t3">CCCC/CC/CC</td><td class="t4">DD</td><td class="t5">EE</td><td class="t6">FFFFFF</td><td class="t7">編集</td></tr>' ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_left">
+        <span class="footer_contents">footer_left</span>
+      </div>
+      <div class="footer_center">
+        <span class="site_inc">© Portfolio .inc</span>
+      </div>
+      <div class="footer_right">
+        <span class="footer_contents">footer_right</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
