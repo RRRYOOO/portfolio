@@ -151,13 +151,13 @@
   }
 
   .t1 {
-    width: 22%;
     max-width: 22vw;
+    width: 22%;
   }
 
   .t2 {
-    width: 42%;
     max-width: 42vw;
+    width: 42%;
   }
 
   .td_left {
@@ -166,6 +166,7 @@
   }
 
   .t3 {
+    max-width: 9vmin;
     width: 8%;
   }
 
@@ -328,13 +329,13 @@
   }
 
   .t1 {
-    width: 18%;
     max-width: 18vw;
+    width: 18%;
   }
 
   .t2 {
-    width: 40%;
     max-width: 37vw;
+    width: 40%;
   }
 
   .td_left {
