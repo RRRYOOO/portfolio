@@ -1,0 +1,365 @@
+* {
+  box-sizing: border-box;
+  font-family: “Segoe UI”, Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+/* スマートフォン(Portfolio)用デザイン */
+
+  .main_container {
+    /*background-color: yellow;*/
+    border: 2px solid rgb(72, 72, 72);
+    margin: 0 1vw;
+    padding: 1vh 0.5vw;
+  }
+  
+  .show_orders {
+    background-color: darkgray;
+    margin-bottom: 4vmin;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_title {
+    /*background-color: khaki;*/
+    font-size: 2.7vmin;
+    margin-bottom: 0.5vh;
+    padding-left: 1vw;
+    text-align: left;
+  }
+
+  .order_container {
+    /*background-color: lightseagreen;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0.2vh 1vw;
+  }
+
+  .show_order {
+    background-color: white;
+    margin-bottom: 0.5vh;
+    padding: 0.2vh 0.2vw;
+    width: 45%;
+  }
+
+  .order_title {    
+    /*background-color: seagreen;*/
+    font-size: 2.5vmin;
+  }
+
+  .order_items {
+    /*background-color: mediumorchid;*/
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order_item {
+    /*background-color: orange;*/
+    padding: 0.2vh 0;
+    width: 48%;
+  }
+
+  .order_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 2.2vw;
+    width:80%;
+  }
+
+  .order_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .order_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_things {
+    /*background-color: hotpink;*/
+    margin-bottom: 0.5vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_registration {
+    /*background-color: teal;*/
+    margin-bottom: 0.5vh;
+    padding: 0 1vw;
+    text-align: right;
+  }
+
+  .registration_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 2.2vmin;
+    padding: 0.3vh 0;
+    width: 35%;
+  }
+
+  .registration_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .registration_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+
+  .todo_table {
+    /*background-color: olivedrab;*/
+    padding: 0.2vh 0.2vw;
+  }
+
+  .table {
+    border:1px solid rgb(230, 230, 230);
+    display: block;
+    font-size: 1.8vmin;
+    line-height: 1.3em;
+    max-height: 950px;
+    overflow-x: auto;
+    overflow-y: auto;
+    table-layout:fixed;
+    width: 100%;
+  }
+
+
+  th {
+    background-color: black;
+    color: white;
+    font-weight: normal;
+    line-height: 1.1em;
+    position: sticky;
+    top: 0;
+  }
+
+  td {
+    background-color: white;
+    border-right: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 0.2vh 0;
+  }
+
+  tr:hover td {
+    background-color: darkgray;
+  }
+
+  .t1 {
+    width: 22%;
+    max-width: 22vw;
+  }
+
+  .t2 {
+    width: 42%;
+    max-width: 42vw;
+  }
+
+  .td_left {
+    text-align: left;
+    word-wrap: break-word;
+  }
+
+  .t3 {
+    width: 8%;
+  }
+
+  .t4 {
+    width: 4%;
+  }
+
+  .t5 {
+    width: 4%;
+  }
+
+  .t6 {
+    width: 13%;
+  }
+
+  .t7 {
+    width: 7%;
+  }
+
+
+/* PC用、スマートフォン(Landscape)用デザイン */
+@media (min-width: 1024px), (orientation: landscape) {
+  .main_container {
+    /*background-color: yellow;*/
+    border: 2px solid rgb(72, 72, 72);
+    margin: 0 2vw;
+    padding: 0.5vh 0.5vw;
+  }
+  
+  .show_orders {
+    background-color: darkgray;
+    margin-bottom: 4vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_title {
+    /*background-color: khaki;*/
+    font-size: 2vw;
+    margin-bottom: 0.5vh;
+    padding-left: 1vw;
+    text-align: left;
+  }
+
+  .order_container {
+    /*background-color: lightseagreen;*/
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh 1vw;
+  }
+
+  .show_order {
+    background-color: white;
+    padding: 0.2vh 0.2vw;
+    width: 23%;
+  }
+
+  .order_title {    
+    /*background-color: seagreen;*/
+    font-size: 1.5vw;
+  }
+
+  .order_items {
+    /*background-color: mediumorchid;*/
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order_item {
+    /*background-color: orange;*/
+    width: 48%;
+  }
+
+  .order_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 1vw;
+    width:80%;
+  }
+
+  .order_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .order_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_things {
+    /*background-color: hotpink;*/
+    margin-bottom: 1vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_registration {
+    /*background-color: teal;*/
+    margin-bottom: 1vh;
+    padding: 0 1vw;
+    text-align: right;
+  }
+
+  .registration_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 1vw;
+    padding: 1vh 0;
+    width: 25%;
+  }
+
+  .registration_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .registration_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_table {
+    /*background-color: olivedrab;*/
+    padding: 0.2vh 0.2vw;
+  }
+
+  .table {
+    border:1px solid rgb(230, 230, 230);
+    display: block;
+    font-size: 0.9vw;
+    line-height: 1.3em;
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    table-layout:fixed;
+    width: 100%;
+  }
+
+  th {
+    background-color: black;
+    color: white;
+    font-weight: normal;
+    padding: 1vh 0;
+    position: sticky;
+    top: 0;
+  }
+
+  td {
+    background-color: white;
+    border-right: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 0.2vh 0;
+  }
+
+  tr:hover td {
+    background-color: darkgray;
+  }
+
+  .t1 {
+    width: 18%;
+    max-width: 18vw;
+  }
+
+  .t2 {
+    width: 40%;
+    max-width: 37vw;
+  }
+
+  .td_left {
+    text-align: left;
+    word-wrap: break-word;
+  }
+
+  .t3 {
+    width: 8%;
+  }
+
+  .t4 {
+    width: 8%;
+  }
+
+  .t5 {
+    width: 8%;
+  }
+
+  .t6 {
+    width: 12%;
+  }
+
+  .t7 {
+    width: 6%;
+  }
+
+}
