@@ -16,15 +16,16 @@
   // ログインユーザに関するセッション情報を取得
   $loginUser = $_SESSION['LoginUser'];
 
-  // ToDo表示に関するセッション情報を取得
-  // ToDo表示に関するセッション情報がなければ、ToDo表示情報を生成
-  if(empty($_SESSION['TodoShow'])) {
-    $todoShow = new TodoShow($loginUser->getUserID());
-    $todoShow->setTodoOrder(1);
-    echo 1;
-  } else {
-    $todoShow = $_SESSION['TodoShow'];
+  // ToDoShowのインスタンスを作成
+  $todoShow = new TodoShow($loginUser->getUserID());
+  // 表示指示ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
+  $order = $_POST['Order'];
+  // リダイレクトでない場合は、期限の昇順になるようにする。
+  if(empty($order)) {
+    $order = 1;
   }
+  // ToDoの表示順をセット
+  $todoShow->setTodoOrder($order);
 
   // ToDo登録完了メッセージのセッション情報を取得
   $registrationCompMessage = null;
@@ -88,13 +89,13 @@
                 </div>
                 <div class="order_items">
                   <div class="order_item">
-                    <form method="post" action="../todo_show/todo_show.php">
+                    <form method="post" action="todo_show.html">
                       <!-- 期日の昇順の場合は"Order"に1を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="1">昇順</button>
                     </form>
                   </div>
                   <div class="order_item">
-                    <form method="post" action="../todo_show/todo_show.php">
+                    <form method="post" action="todo_show.html">
                       <!-- 期日の降順の場合は"Order"に2を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="2">降順</button>
                     </form>
@@ -107,13 +108,13 @@
                 </div>
                 <div class="order_items">
                   <div class="order_item">
-                    <form method="post" action="../todo_show/todo_show.php">
+                    <form method="post" action="todo_show.html">
                       <!-- 難易度の昇順の場合は"Order"に3を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="3">昇順</button>
                     </form>
                   </div>
                   <div class="order_item">
-                    <form method="post" action="../todo_show/todo_show.php">
+                    <form method="post" action="todo_show.html">
                       <!-- 難易度の降順の場合は"Order"に4を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="4">降順</button>
                     </form>
@@ -126,13 +127,13 @@
                 </div>
                 <div class="order_items">
                   <div class="order_item">
-                    <form method="post" action="../todo_show/todo_show.php">
+                    <form method="post" action="todo_show.html">
                       <!-- 重要度の昇順の場合は"Order"に5を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="5">昇順</button>
                     </form>
                   </div>
                   <div class="order_item">
-                    <form method="post" action="../todo_show/todo_show.php">
+                    <form method="post" action="todo_show.html">
                       <!-- 重要度の降順の場合は"Order"に6を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="6">降順</button>
                     </form>
@@ -145,13 +146,13 @@
                 </div>
                 <div class="order_items">
                   <div class="order_item">
-                    <form method="post" action="">
+                    <form method="post" action="todo_show.html">
                       <!-- ステータスの昇順の場合は"Order"に7を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="7">昇順</button>
                     </form>
                   </div>
                   <div class="order_item">
-                    <form method="post" action="">
+                    <form method="post" action="todo_show.html">
                       <!-- ステータスの降順の場合は"Order"に8を格納してPOSTする -->
                       <button class="order_button" type="submit" name="Order" value="8">降順</button>
                     </form>
@@ -200,3 +201,5 @@
   </footer>
 </body>
 </html>
+
+<?php unset($todoShow)?>

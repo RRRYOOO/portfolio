@@ -143,7 +143,7 @@
     background-color: white;
     border-right: 1px solid rgb(230, 230, 230);
     border-top: 1px solid rgb(230, 230, 230);
-    padding: 0.2vh 0;
+    padding: 0.7vh 0;
   }
 
   tr:hover td {
@@ -151,13 +151,11 @@
   }
 
   .t1 {
-    max-width: 22vw;
-    width: 22%;
+    width: 22vw;
   }
 
   .t2 {
-    max-width: 42vw;
-    width: 42%;
+    width: 42vw;
   }
 
   .td_left {
@@ -321,7 +319,7 @@
     background-color: white;
     border-right: 1px solid rgb(230, 230, 230);
     border-top: 1px solid rgb(230, 230, 230);
-    padding: 0.2vh 0;
+    padding: 0.7vh 0;
   }
 
   tr:hover td {
@@ -329,13 +327,11 @@
   }
 
   .t1 {
-    max-width: 18vw;
-    width: 18%;
+    width: 18vw;
   }
 
   .t2 {
-    max-width: 37vw;
-    width: 40%;
+    width: 37vw;
   }
 
   .td_left {
