@@ -109,14 +109,14 @@
           </div>
           <!-- ボタン -->
           <div class="register_input">
-            <div class="input_button">
+            <div class="register_split">
             <!-- 修正ボタン（押すとリダイレクトフラグがポストされ、本プログラムのリダイレクト時に上部のPHP内で受信し、セッションに保存後にToDo登録画面に遷移する） -->
             <form method="post" action="todo_registration_confirm.html">
               <input type="hidden" name="RedirectFlag" value="1">
               <input class="redirect_button"  type="submit" value="修正">
               </form>
             </div>
-            <div class="input_button">
+            <div class="register_split">
               <!-- 確定ボタン (押すとToDoの登録が実行される) -->
               <button class="register_button" onclick="location.href='../todo_registration/todo_registration_execute.php'">確定</button>
             </div>
