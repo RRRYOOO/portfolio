@@ -58,9 +58,9 @@
 
 .textarea_long {
   border: 1px solid gray;
-  font-size: 2vmin;
-  height: calc(1.2em * 10);
-  line-height: 1.1em;
+  font-size: 1.2vmin;
+  height: calc(1.3em * 10);
+  line-height: 1.3em;
   resize: none;
   width: 62vw;
 }
@@ -169,8 +169,8 @@
   .textarea_long {
     border: 1px solid gray;
     font-size: 2vh;
-    height: calc(1.2em * 6);
-    line-height: 1.1em;
+    height: calc(1.3em * 6);
+    line-height: 1.3em;
     resize: none;
     width: 68vw;
   }
