@@ -29,9 +29,23 @@
 
   // ToDo登録完了メッセージのセッション情報を取得
   $registrationCompMessage = null;
-  if(!empty($_SESSION['RegisterationCompMC:\Users\owner\Programming\portfolio\portfolio03\01\programessage'])) {
-    //$registrationCompMessage = $_SESSION['RegisterationCompMessage'];
-    //unset($_SESSION['RegisterationCompMessage']);
+  if(!empty($_SESSION['RegisterationCompMessage'])) {
+    $registrationCompMessage = $_SESSION['RegisterationCompMessage'];
+    unset($_SESSION['RegisterationCompMessage']);
+  }
+
+  // ToDo編集完了メッセージのセッション情報を取得
+  $editCompMessage = null;
+  if(!empty($_SESSION['EditCompMessage'])) {
+    $editCompMessage = $_SESSION['EditCompMessage'];
+    unset($_SESSION['EditCompMessage']);
+  }
+
+  // ToDo削除完了メッセージのセッション情報を取得
+  $deletenCompMessage = null;
+  if(!empty($_SESSION['DeleteCompMessage'])) {
+    $deleteCompMessage = $_SESSION['DeleteCompMessage'];
+    unset($_SESSION['DeleteCompMessage']);
   }
 ?>
 
@@ -72,6 +86,8 @@
     <div class="main_wrapper">
       <div class="main_message">
         <p><?php echo $registrationCompMessage ?></p>
+        <p><?php echo $editCompMessage ?></p>
+        <p><?php echo $deleteCompMessage ?></p>
       </div>
       <div class="main_title">
         <span>ToDo表示</span>
@@ -170,16 +186,9 @@
               <button class="registration_button" onclick="location.href='todo_registration.html'"></span>ToDo登録</button>
             </div>
             <div class="todo_table">
-              <!--<table class="table">
-                <thead>
-                  <tr><th class="t1">タイトル</th><th class="t2">内容</th><th class="t3">期日</th><th class="t4">難易度</th><th class="t5">重要度</th><th class="t6">ステータス</th><th class="t7">操作</th></tr>
-                </thead>
-                <tbody>-->
-                  <?php 
-                    $todoShow->showToDoThings();
-                  ?>
-                <!--</tbody>
-              </table>-->
+              <?php 
+                $todoShow->showToDoThings();
+              ?>
             </div>
           </div>
         </div>
@@ -202,5 +211,3 @@
   </footer>
 </body>
 </html>
-
-<?php unset($todoShow)?>
