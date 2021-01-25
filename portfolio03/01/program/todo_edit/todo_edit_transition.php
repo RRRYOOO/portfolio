@@ -2,7 +2,7 @@
   // phpファイルの読み込み
   require_once('../database_connect/registered_todo_data_class.php');
   require_once('../user_login/present_login_user_class.php');
-  require_once('todo_edit_check_class.php');
+  require_once('todo_edit_class.php');
 
   // セッションスタート
   session_start();
