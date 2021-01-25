@@ -1,12 +1,31 @@
 <?php
   // phpファイルの読み込み
-  require_once('../todo_edit/todo_edit_check_class.php');
+  require_once('../user_login/present_login_user_class.php');
+  require_once('../todo_edit/todo_edit_class.php');
 
   // セッションスタート
   session_start();
 
+  // ログアウト状態の場合、ログイン画面へ遷移（ログアウト状態のユーザがアクセスしてきた場合を想定）
+  if(empty($_SESSION['LoginUser'])) {
+    // ログイン画面へ遷移
+    header('Location: user_login.html');
+    exit;
+  }
+
+  // ログインユーザに関するセッション情報を取得
+  $loginUser = $_SESSION['LoginUser'];
+
   // ToDo編集情報に関するセッション情報を取得
   $editTodo = $_SESSION['EditTodo'];
+
+  // エラーによるリダイレクトかどうかを判断
+  $errorFlag = 0;
+  // エラーによるリダイレクトの場合
+  if($_SESSION['EditErrorFlag'] == 1) {
+    // エラーフラグの値を受け取る
+    $errorFlag = $_SESSION['EditErrorFlag'];
+  }
 
 ?>
 
@@ -28,7 +47,7 @@
       <div class="header_left">
         <div class="header_contents">
           <span class="fas fa-user"></span>
-          <span><?php echo '田中 太郎' ?></span>
+          <span><?php echo $loginUser->getUserLastName().' '.$loginUser->getUserFirstName() ?></span>
         </div>
       </div>
       <div class="header_center">
@@ -48,7 +67,17 @@
       <div class="main_message"> 
         <!-- エラーによりリダイレクトされた場合は、エラーメッセージを表示 -->
         <?php
-          echo 'メッセージ１';
+          if($errorFlag == 1) {
+            echo '<p>'.$editTodo->errorMessageEditTodoUserID.'</p>';
+            echo '<p>'.$editTodo->errorMessageEditTodoTitle.'</p>';
+            echo '<p>'.$editTodo->errorMessageEditTodoContent.'</p>';
+            echo '<p>'.$editTodo->errorMessageEditTodoDeadline.'</p>';
+            echo '<p>'.$editTodo->errorMessageEditTodoDifficulty.'</p>';
+            echo '<p>'.$editTodo->errorMessageEditTodoImportance.'</p>';
+            echo '<p>'.$editTodo->errorMessageEditTodoStatus.'</p>';
+            echo '<p>'.$editTodo->errorMessageEdit.'</p>';
+            echo '<p>'.$editTodo->errorMessageNoChange.'</p>';
+          }
         ?>
       </div>
       <div class="main_title">
@@ -57,7 +86,7 @@
       <div class="main_contents">
         <div class="main_container">
           <!-- 入力フォーム -->
-          <form method="post" action="../todo_edit/todo_edit_check.php">
+          <form method="post">
             <!-- タイトルを入力 -->
             <div class="input_contents">
               <span class="input_item">タイトル</span>
@@ -111,18 +140,18 @@
                   <option value="4" <?php if($editTodo->getEditTodoStatus() == 'キャンセル') { echo 'selected'; } ?>>キャンセル</option>                  
                 </select>
               </div>              
-            </div> 
+            </div>           
             <div class="edit_input">
               <!-- 削除ボタン -->
               <div class="edit_split">
-                <input class="delete_button" type="submit" value="削除">
+                <button class="delete_button" formaction="../todo_edit/todo_delete_check.php">削除</button>
               </div>
-              <!-- 登録ボタン -->
+              <!-- 編集ボタン -->
               <div class="edit_split">
-                <input class="register_button" type="submit" value="登録">
+                <button class="register_button" formaction="../todo_edit/todo_edit_check.php">編集</button>
               </div>
             </div>
-          </form>
+          </form>  
         </div>
         <!-- ToDo表示画面へのリンク -->
         <div class="link_to_todoshow">
@@ -146,3 +175,10 @@
   </footer>
 </body>
 </html>
+
+<?php
+  // エラーフラグのセッション情報を破棄
+  unset($_SESSION['EditErrorFlag']);
+  // 確認合格フラグのセッション情報を破棄
+  unset($_SESSION['EditCheckPassFlag']);
+?>

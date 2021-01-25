@@ -1,3 +1,45 @@
+<?php
+  // phpファイルの読み込み
+  require_once('../user_login/present_login_user_class.php');
+  require_once('../todo_edit/todo_edit_class.php');
+
+  // セッションスタート
+  session_start();
+
+  // 修正ボタン押下によるリダイレクトの場合、
+  if($_POST['RedirectFlag'] == 1){
+    // ToDo編集画面へ遷移
+    header('Location: todo_edit.html');
+    exit;
+  }
+
+  // ログインユーザに関するセッション情報を取得
+  $loginUser = $_SESSION['LoginUser'];
+
+  // ToDo編集情報に関するセッション情報を取得
+  $editTodo = $_SESSION['EditTodo'];
+
+  // 削除処理か編集処理かを判断
+  // 削除フラグがあるか確認
+  $deleteFlag = $_SESSION['DeleteFlag'];
+  // 削除フラグが1でない場合は編集処理
+  if($deleteFlag != 1) {
+    // 入力されたTodo編集情報の確認が合格していない場合（ToDo編集確認画面での更新ボタン押下を想定）
+    if($_SESSION['EditCheckPassFlag'] != 1) {
+      // エラー処理を実行
+      $editTodo->setErrorProcedure();
+      // エラーフラグをセッションに保存し、ToDo編集画面に戻る
+      $_SESSION['EditErrorFlag'] = 1;
+      header('Location: todo_edit.html');
+      exit;
+    }
+  }
+  // 削除フラグのセッション情報を破棄
+  unset($_SESSION['DeleteFlag']);
+  // 確認合格フラグのセッション情報を破棄
+  unset($_SESSION['EditCheckPassFlag']);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,8 +48,8 @@
     <!-- ②ページタイトル -->
     <title>ToDoList</title>
     <!-- ③スタイルシートの読み込み -->
-    <link rel="stylesheet" href="./css/stylesheet_common_color.css">
-    <link rel="stylesheet" href="./css/todo_edit_confirm_color.css">
+    <link rel="stylesheet" href="./css/stylesheet_common.css">
+    <link rel="stylesheet" href="./css/todo_edit_confirm.css">
     <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,7 +58,7 @@
       <div class="header_left">
         <div class="header_contents">
           <span class="fas fa-user"></span>
-          <span><?php echo '田中 太郎' ?></span>
+          <span><?php echo $loginUser->getUserLastName().' '.$loginUser->getUserFirstName() ?></span>
         </div>
       </div>
       <div class="header_center">
@@ -41,53 +83,62 @@
       <div class="main_contents">
         <div class="main_container">
           <div class="input_message">
-            <p class="input_long">下記の内容で登録してよろしいでしょうか</p>
+            <p class="input_long">
+              <!-- 削除処理の場合と編集処理の場合でメッセージを切り替える -->
+              <?php if($deleteFlag == 1) { echo "下記の内容を削除してよろしいでしょうか。";} else { echo "下記の内容で編集してよろしいでしょうか。";} ?>
+            </p>
           </div>             
           <!-- 入力内容の確認 -->
           <!-- タイトルの入力値を表示 -->
           <div class="input_contents">
             <span class="input_item">タイトル</span>
-            <span class="input_long"><?php echo 'インターンシップの企画'?></span>
+            <span class="input_long"><?php echo $editTodo->getEditTodoTitle() ?></span>
           </div>
           <!-- 内容の入力値を表示 -->
           <div class="input_contents">
             <span class="input_item">内容</span>
-            <span class="textarea_long"><?php echo '2022年度入社の学生向けにインターンシップを企画する。' ?></span>
+            <span class="textarea_long"><?php echo $editTodo->getEditTodoContent() ?></span>
           </div>
           <div class="input_selects">
             <div class="input_split">
               <!-- 期限の選択値を表示 -->
               <span class="input_item">期限</span>
-              <span class="input_short"><?php echo '2021-02-02' ?></span>
+              <span class="input_short"><?php echo $editTodo->getEditTodoDeadline() ?></span>
             </div> 
             <div class="input_split">
               <!-- 難易度の選択値を表示 -->
               <span class="input_item">難易度</span>                                   
-              <span class="input_short"><?php echo '高' ?></span>
+              <span class="input_short"><?php echo $editTodo->getEditTodoDifficulty() ?></span>
             </div>
             <div class="input_split">
               <!-- 重要度の選択値を表示 -->
               <span class="input_item">重要度</span>                                             
-              <span class="input_short"><?php echo '中' ?></span>
+              <span class="input_short"><?php echo $editTodo->getEditTodoImportance() ?></span>
             </div>
             <div class="input_split">
               <!-- ステータスの選択値を表示 -->
               <span class="input_item">ステータス</span>                                             
-              <span class="input_short"><?php echo '進行中' ?></span>
+              <span class="input_short"><?php echo $editTodo->getEditTodoStatus() ?></span>
             </div>            
           </div>
           <!-- ボタン -->
           <div class="edit_input">
             <div class="edit_split">
-            <!-- 修正ボタン（押すとリダイレクトフラグがポストされ、本プログラムのリダイレクト時に上部のPHP内で受信し、セッションに保存後にToDo登録画面に遷移する） -->
+            <!-- 修正ボタン（押すとリダイレクトフラグがポストされ、本プログラムのリダイレクト時に上部のPHP内で受信し、セッションに保存後にToDo編集画面に遷移する） -->
             <form method="post" action="todo_edit_confirm.html">
               <input type="hidden" name="RedirectFlag" value="1">
               <input class="redirect_button"  type="submit" value="修正">
               </form>
             </div>
             <div class="edit_split">
-              <!-- 確定ボタン (押すとToDoの登録が実行される) -->
-              <button class="excute_button" onclick="location.href='../todo_registration/todo_registration_execute.php'">確定</button>
+              <!-- 確定ボタン (押すとToDoの編集が実行される) -->
+              <!-- 削除処理の場合 -->
+              <?php if($deleteFlag == 1):?>
+                <button class="excute_button" onclick="location.href='../todo_edit/todo_delete_execute.php'">確定</button>
+              <!-- 編集処理の場合 -->
+              <?php else :?>
+                <button class="excute_button" onclick="location.href='../todo_edit/todo_edit_execute.php'">確定</button>
+              <?php endif; ?>
             </div>
           </div>
         </div>
