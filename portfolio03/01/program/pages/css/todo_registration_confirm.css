@@ -68,6 +68,7 @@
   font-size: 2vmin;
   line-height: 1.1em;
   width: 62vw;
+  white-space: pre-wrap;
 }
 
 .register_input {
@@ -202,6 +203,7 @@
     font-size: 2vh;
     line-height: 1.4em;
     width: 68vw;
+    white-space: pre-wrap;
   }
 
   .register_input {

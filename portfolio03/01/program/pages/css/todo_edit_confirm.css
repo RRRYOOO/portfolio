@@ -5,14 +5,14 @@
 
 /* スマートフォン(Portfolio)用デザイン */
 .main_container {
-  background-color: yellow;
+  /*background-color: yellow;*/
   border: 2px solid rgb(72, 72, 72);
   margin: 0 1vw;
   padding: 2vh 2vw;
 }
 
 .input_message {
-  background-color: pink;
+  /*background-color: pink;*/
   color: red;
   font-weight: bold;
   margin-top: 2vmin;
@@ -22,7 +22,7 @@
  }
 
 .input_contents {
-  background-color: turquoise;
+  /*background-color: turquoise;*/
   display: flex;
   margin-top: 2vmin;
   padding: 1vh 1vw;
@@ -31,14 +31,14 @@
 }
 
 .input_selects {
-  background-color: turquoise;
+  /*background-color: turquoise;*/
   margin-top: 2vmin;
   text-align: left;
   width: 100%
 }
 
 .input_split {
-  background-color: violet;
+  /*background-color: violet;*/
   margin-top: 2vmin;
   padding: 1vh 1vw;
   text-align: left;
@@ -46,7 +46,7 @@
 }
 
 .input_item {
-  background-color: tomato;
+  /*background-color: tomato;*/
   display: inline-block;
   font-size: 2.5vmin;
   margin-right: 8vw;
@@ -68,10 +68,11 @@
   font-size: 2vmin;
   line-height: 1.1em;
   width: 62vw;
+  white-space: pre-wrap;
 }
 
 .edit_input {
-  background-color: turquoise;
+  /*background-color: turquoise;*/
   display: flex;
   justify-content: space-between; 
   margin-top: 4vh;
@@ -80,7 +81,7 @@
 }
 
 .edit_split {
-  background-color: green;
+  /*background-color: green;*/
   margin: 0;
   padding: 1vh 1vw;
   text-align: center;
@@ -126,7 +127,7 @@
 }
 
 .link_to_todoshow {
-  background-color: turquoise;
+  /*background-color: turquoise;*/
   margin-top: 2vh;
   padding: 1vh 1vw;
   text-align: left;
@@ -145,14 +146,14 @@
 /* PC用、スマートフォン(Landscape)用デザイン */
 @media (min-width: 1024px), (orientation: landscape) {
   .main_container {
-    background-color: yellow;
+    /*background-color: yellow;*/
     border: 2px solid rgb(72, 72, 72);
     margin: 0 2vw;
     padding: 2vh 2vw;
   }
 
   .input_message {
-    background-color: pink;
+    /*background-color: pink;*/
     color: red;
     font-weight: bold;
     margin: 2vh auto 0;
@@ -162,7 +163,7 @@
   } 
 
   .input_contents {
-    background-color: turquoise;
+    /*background-color: turquoise;*/
     display: flex;
     margin: 2vh auto 0;
     padding: 1vh 1vw;
@@ -171,7 +172,7 @@
   }
 
   .input_selects {
-    background-color: turquoise;
+    /*background-color: turquoise;*/
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between; 
@@ -181,7 +182,7 @@
   }
 
   .input_split {
-    background-color: violet;
+    /*background-color: violet;*/
     margin: 1vh 0;
     padding: 1vh 1vw;
     text-align: left;
@@ -189,7 +190,7 @@
   }
 
   .input_item {
-    background-color: tomato;
+    /*background-color: tomato;*/
     display: inline-block;
     font-size: 1.2vw;
     margin-right: 2vw;
@@ -212,12 +213,12 @@
     font-size: 2vh;
     line-height: 1.1em;
     margin-left: 1vw;
-
     width: 68vw;
+    white-space: pre-wrap;
   }
 
   .edit_input {
-    background-color: turquoise;
+    /*background-color: turquoise;*/
     display: flex;
     justify-content: space-between; 
     margin: 4vh auto 0;
@@ -226,7 +227,7 @@
   }
 
   .edit_split {
-    background-color: green;
+    /*background-color: green;*/
     margin: 0;
     padding: 1vh 1vw;
     text-align: center;
@@ -272,7 +273,7 @@
   }
 
   .link_to_todoshow{
-    background-color: turquoise;
+    /*background-color: turquoise;*/
     margin: 0.2vh auto ;
     padding: 0 1vw;
     text-align: left;
