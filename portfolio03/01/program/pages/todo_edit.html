@@ -1,0 +1,148 @@
+<?php
+  // phpファイルの読み込み
+  require_once('../todo_edit/todo_edit_check_class.php');
+
+  // セッションスタート
+  session_start();
+
+  // ToDo編集情報に関するセッション情報を取得
+  $editTodo = $_SESSION['EditTodo'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- ①文字コード -->
+    <meta charset="utf-8">
+    <!-- ②ページタイトル -->
+    <title>ToDoList</title>
+    <!-- ③スタイルシートの読み込み -->
+    <link rel="stylesheet" href="./css/stylesheet_common.css">
+    <link rel="stylesheet" href="./css/todo_edit.css">
+    <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_left">
+        <div class="header_contents">
+          <span class="fas fa-user"></span>
+          <span><?php echo '田中 太郎' ?></span>
+        </div>
+      </div>
+      <div class="header_center">
+        <span class="site_title">ToDoList</span>
+      </div>
+      <div class="header_right">
+        <div class="header_contents">
+          <a href="../user_login/user_logout.php" class="header_link">
+            <span>ログアウト</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <div class="main_wrapper">
+      <div class="main_message"> 
+        <!-- エラーによりリダイレクトされた場合は、エラーメッセージを表示 -->
+        <?php
+          echo 'メッセージ１';
+        ?>
+      </div>
+      <div class="main_title">
+        <span>ToDo編集</span>
+      </div>
+      <div class="main_contents">
+        <div class="main_container">
+          <!-- 入力フォーム -->
+          <form method="post" action="../todo_edit/todo_edit_check.php">
+            <!-- タイトルを入力 -->
+            <div class="input_contents">
+              <span class="input_item">タイトル</span>
+                <!-- エラーによりリダイレクトされた場合は、前回入力値を表示（次項目がエラーだった場合はクリアされる） -->
+              <input class="input_long" name="Title" value="<?php echo $editTodo->getEditTodoTitle() ?>">
+            </div>
+            <!-- 内容を入力 -->
+            <div class="input_contents">
+              <span class="input_item">内容</span>
+                <!-- エラーによりリダイレクトされた場合は、前回入力値を表示（次項目がエラーだった場合はクリアされる） -->
+              <textarea class="textarea_long" name="Content"><?php echo $editTodo->getEditTodoContent() ?></textarea>
+            </div>
+            <div class="input_selects">
+              <div class="input_split">
+                <!-- 期限を選択 -->
+                <span class="input_item">期限</span>
+                <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
+                <input class="input_short"  name="Deadline" type="date" value="<?php echo $editTodo->getEditTodoDeadline() ?>">   
+              </div> 
+              <div class="input_split">
+                <!-- 難易度を選択 -->
+                <span class="input_item">難易度</span>                                   
+                <select class="input_short" name="Difficulty">
+                  <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
+                  <option value=""></option>
+                  <option value="1" <?php if($editTodo->getEditTodoDifficulty() == '低') { echo 'selected'; } ?>>低</option>
+                  <option value="2" <?php if($editTodo->getEditTodoDifficulty() == '中') { echo 'selected'; } ?>>中</option>
+                  <option value="3" <?php if($editTodo->getEditTodoDifficulty() == '高') { echo 'selected'; } ?>>高</option>
+                </select>
+              </div>
+              <div class="input_split">
+                <!-- 重要度を選択 -->
+                <span class="input_item">重要度</span>                                             
+                <select class="input_short" name="Importance">
+                  <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
+                  <option value=""></option>
+                  <option value="1" <?php if($editTodo->getEditTodoImportance() == '低') { echo 'selected'; } ?>>低</option>
+                  <option value="2" <?php if($editTodo->getEditTodoImportance() == '中') { echo 'selected'; } ?>>中</option>
+                  <option value="3" <?php if($editTodo->getEditTodoImportance() == '高') { echo 'selected'; } ?>>高</option>
+                </select>
+              </div>
+              <div class="input_split">
+                <!-- ステータスを選択 -->
+                <span class="input_item">ステータス</span>                                             
+                <select class="input_short" name="Status">
+                  <!-- エラーによりリダイレクトされた場合は、前回選択値を表示（次項目がエラーだった場合はクリアされる） -->
+                  <option value=""></option>
+                  <option value="1" <?php if($editTodo->getEditTodoStatus() == '未着手') { echo 'selected'; } ?>>未着手</option>
+                  <option value="2" <?php if($editTodo->getEditTodoStatus() == '進行中') { echo 'selected'; } ?>>進行中</option>
+                  <option value="3" <?php if($editTodo->getEditTodoStatus() == '完了') { echo 'selected'; } ?>>完了</option>
+                  <option value="4" <?php if($editTodo->getEditTodoStatus() == 'キャンセル') { echo 'selected'; } ?>>キャンセル</option>                  
+                </select>
+              </div>              
+            </div> 
+            <div class="edit_input">
+              <!-- 削除ボタン -->
+              <div class="edit_split">
+                <input class="delete_button" type="submit" value="削除">
+              </div>
+              <!-- 登録ボタン -->
+              <div class="edit_split">
+                <input class="register_button" type="submit" value="登録">
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- ToDo表示画面へのリンク -->
+        <div class="link_to_todoshow">
+          <a href="todo_show.html"><span class="link">ToDo表示画面に戻る</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_left">
+        <span class="footer_contents"></span>
+      </div>
+      <div class="footer_center">
+        <span class="site_inc">© Portfolio .inc</span>
+      </div>
+      <div class="footer_right">
+        <span class="footer_contents"></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

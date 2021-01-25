@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+  font-family: “Segoe UI”, Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* スマートフォン(Portfolio)用デザイン */
+.main_container {
+  /*background-color: yellow;*/
+  border: 2px solid rgb(72, 72, 72);
+  margin: 0 1vw;
+  padding: 2vh 2vw;
+}
+
+.input_contents {
+  /*background-color: turquoise;*/
+  display: flex;
+  margin-top: 2vmin;
+  padding: 1vh 1vw;
+  text-align: left;
+  width: 100%
+}
+
+.input_selects {
+  /*background-color: turquoise;*/
+  margin-top: 2vmin;
+  text-align: left;
+  width: 100%
+}
+
+.input_split {
+  /*background-color: violet;*/
+  margin-top: 2vmin;
+  padding: 1vh 1vw;
+  text-align: left;
+  width: 100%
+}
+
+.input_item {
+  /*background-color: tomato;*/
+  display: inline-block;
+  font-size: 2.5vmin;
+  margin-right: 8vw;
+  text-align: left;
+  width: 15vw;
+}
+
+.input_short {
+  border: 1px solid gray;
+  font-size: 2vmin;
+  width: 62vw;
+}
+
+.input_long {
+  border: 1px solid gray;
+  font-size: 2vmin;
+  width: 62vw;
+}
+
+.textarea_long {
+  border: 1px solid gray;
+  font-size: 1.2vmin;
+  height: calc(1.3em * 10);
+  line-height: 1.3em;
+  resize: none;
+  width: 62vw;
+}
+
+.edit_input {
+  /*background-color: turquoise;*/
+  display: flex;
+  justify-content: space-between; 
+  margin-top: 4vh;
+  padding: 1vh 0;
+  width: 100%
+}
+
+.edit_split {
+  /*background-color: green;*/
+  margin: 0;
+  padding: 1vh 1vw;
+  text-align: center;
+  width: 45%
+}
+
+.delete_button {
+  background-color:  rgba(72, 72, 72, 0.8);
+  border: 1px solid black;
+  border-radius: 7px;
+  color: white;
+  font-size: 2.5vmin;
+  padding: 0.8vh 0;
+  width: 35vw;
+}
+
+.delete_button:hover {
+  background-color: rgba(72, 72, 72, 0.6);
+}
+
+.delete_button:focus {
+  background-color:  rgba(72, 72, 72, 1);
+  outline: 0;
+}
+
+.register_button {
+  background-color:  rgba(0, 0, 205, 0.8);
+  border: 1px solid black;
+  border-radius: 7px;
+  color: white;
+  font-size: 2.5vmin;
+  padding: 0.8vh 0;
+  width: 35vw;
+}
+
+.register_button:hover {
+  background-color: rgba(0, 0, 205, 0.6);
+}
+
+.register_button:focus {
+  background-color:  rgba(0, 0, 205, 1);
+  outline: 0;
+}
+
+.link_to_todoshow {
+  /*background-color: turquoise;*/
+  margin-top: 2vh;
+  padding: 1vh 1vw;
+  text-align: left;
+  width: 100%
+}
+
+.link {
+  color: darkslategray;
+  font-size: 2vmin;
+}
+
+.link:hover {
+  color: black;
+}
+
+/* PC用、スマートフォン(Landscape)用デザイン */
+@media (min-width: 1024px), (orientation: landscape) {
+  .main_container {
+    /*background-color: yellow;*/
+    border: 2px solid rgb(72, 72, 72);
+    margin: 0 2vw;
+    padding: 2vh 2vw;
+  }
+
+  .input_contents {
+    /*background-color: turquoise;*/
+    display: flex;
+    margin: 2vh auto 0;
+    padding: 1vh 1vw;
+    text-align: left;
+    width: 90%
+  }
+
+  .input_selects {
+    /*background-color: turquoise;*/
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between; 
+    margin: 2vh auto 0;
+    text-align: left;
+    width: 90%
+  }
+
+  .input_split {
+    /*background-color: violet;*/
+    margin: 1vh 0;
+    padding: 1vh 1vw;
+    text-align: left;
+    width: 40%
+  }
+
+  .input_item {
+    /*background-color: tomato;*/
+    display: inline-block;
+    font-size: 1.2vw;
+    margin-right: 2vw;
+    text-align: left;
+    width: 8vw;
+  }
+
+  .input_short {
+    border: 1px solid gray;
+    font-size: 2vh;
+    width: 19vw;
+  }
+
+  .input_long {
+    border: 1px solid gray;
+    font-size: 2vh;
+    margin-left: 1vw;
+    width: 68vw;
+  }
+
+  .textarea_long {
+    border: 1px solid gray;
+    font-size: 2vh;
+    height: calc(1.3em * 6);
+    line-height: 1.3em;
+    margin-left: 1vw;
+    resize: none;
+    width: 68vw;
+  }
+
+  .edit_input {
+    /*background-color: turquoise;*/
+    display: flex;
+    justify-content: space-between; 
+    margin: 4vh auto 0;
+    padding: 1vh 0;
+    width: 90%;
+  }
+
+  .edit_split {
+    /*background-color: green;*/
+    margin: 0;
+    padding: 1vh 1vw;
+    text-align: center;
+    width: 45%
+  }
+
+  .delete_button {
+    background-color: rgba(72, 72, 72, 0.8);
+    border: 1px solid black;
+    border-radius: 7px;
+    color: white;
+    font-size: 1.2vw;
+    padding: 1vh 0;
+    width: 20vw;
+  }
+
+  .delete_button:hover {
+    background-color: rgba(72, 72, 72, 0.6);
+  }
+
+  .delete_button:focus {
+    background-color: rgba(72, 72, 72, 1);
+    outline: 0;
+  }
+  
+  .register_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 7px;
+    color: white;
+    font-size: 1.2vw;
+    padding: 1vh 0;
+    width: 20vw;
+  }
+
+  .register_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .register_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .link_to_todoshow{
+    /*background-color: turquoise;*/
+    margin: 0.2vh auto ;
+    padding: 0 1vw;
+    text-align: left;
+    width: 90%
+  }
+
+  .link {
+    color: darkslategray;
+    font-size: 1vw;
+  }
+
+  .link:hover {
+    color: black;
+  }
+
+}
