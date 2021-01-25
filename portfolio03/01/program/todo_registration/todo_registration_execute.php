@@ -16,7 +16,7 @@
     // リダイレクトフラグとエラーフラグをセッションに保存し、Todo登録画面に戻る
     $_SESSION['RegistrationRedirectFlag'] = 1;
     $_SESSION['RegistrationErrorFlag'] = 1;
-    // ユーザ登録画面へ遷移する
+    // ToDo登録画面へ遷移する
     header('Location: ../pages/todo_registration.html');
     exit;
   // Todo登録の実行が成功した場合
