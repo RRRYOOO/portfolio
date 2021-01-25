@@ -111,7 +111,6 @@
     outline: 0;
   }
 
-
   .todo_table {
     /*background-color: olivedrab;*/
     padding: 0.2vh 0.2vw;
@@ -184,6 +183,27 @@
     width: 7%;
   }
 
+  .edit_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.8vmin;
+  }
+
+  .edit_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .edit_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_table {
+    /*background-color: olivedrab;*/
+    padding: 0.2vh 0.2vw;
+  }
 
 /* PC用、スマートフォン(Landscape)用デザイン */
 @media (min-width: 1024px), (orientation: landscape) {
@@ -357,6 +377,23 @@
 
   .t7 {
     width: 6%;
+  }
+
+  .edit_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 2px;
+    color: white;
+    font-size: 0.9vw;
+  }
+
+  .edit_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .edit_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
   }
 
 }

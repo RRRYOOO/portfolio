@@ -107,7 +107,7 @@
         <td class="t4" style="text-align: center; vertical-align: top">'.$this->exchangeDifficulty($todo["todo_difficulty"]).'</td>
         <td class="t5" style="text-align: center; vertical-align: top">'.$this->exchangeImportance($todo["todo_importance"]).'</td>
         <td class="t6" style="text-align: center; vertical-align: top">'.$this->exchangeStatus($todo["todo_status"]).'</td>
-        <td class="t7" style="text-align: center; vertical-align: top"><form method="post" action="../todo_edit/todo_edit.php"><input type="hidden" name="EditTodoID" value="'.$todo["id"].'"><a class="todoEdit"href="../todo_edit/todo_edit.php">編集</a></form></td></tr>';
+        <td class="t7" style="text-align: center; vertical-align: top"><form method="post" action="../todo_edit/todo_edit_transition.php"><input type="hidden" name="EditTodoID" value="'.$todo["id"].'">              <input class="edit_button" type="submit" value="編集"></form></td></tr>';
       }
       echo '</tbody></table>';
       return;
