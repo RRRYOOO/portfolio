@@ -1,5 +1,4 @@
 <?php 
-  echo 1;
   // phpファイルの読み込み
   require_once('todo_registration_class.php');
   require_once('../user_login/present_login_user_class.php');
