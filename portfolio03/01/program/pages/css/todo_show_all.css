@@ -1,0 +1,594 @@
+* {
+  box-sizing: border-box;
+  font-family: “Segoe UI”, Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+/* スマートフォン(Portfolio)用デザイン */
+  .main_container {
+    /*background-color: yellow;*/
+    border: 2px solid rgb(72, 72, 72);
+    margin: 0 1vw;
+    padding: 1vh 0.5vw;
+  }
+  
+  .show_orders {
+    background-color: darkgray;
+    margin-bottom: 1vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_title {
+    /*background-color: khaki;*/
+    font-size: 2.7vmin;
+    margin-bottom: 0.5vh;
+    padding-left: 1vw;
+    text-align: left;
+  }
+
+  .select_container {
+    /*background-color: deeppink;*/
+    display: flex;
+    justify-content: center;
+    margin: 1vh 0;
+    padding: 0.2vh 1vw;
+  }
+
+  .select_item {
+    background-color: white;
+    padding: 1vh 0.2vw;
+    width: 95%;
+  }
+
+  .select_title {
+    /*background-color: tomato;*/
+    font-size: 2.5vmin;
+    margin-right: 4vw;
+    text-align: left;
+    width: 15vw;
+  }
+
+  .input_short {
+    border: 1px solid gray;
+    font-size: 2.3vmin;
+    margin-right: 4vw;
+    width: 40vw;
+  }
+
+  .select_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 2.2vmin;
+    width: 18vw;
+  }
+
+  .select_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .select_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .order_container {
+    /*background-color: lightseagreen;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0.2vh 1vw;
+  }
+
+  .show_order {
+    background-color: white;
+    margin-bottom: 0.5vh;
+    padding: 0.2vh 0.2vw;
+    width: 45%;
+  }
+
+  .order_title {    
+    /*background-color: seagreen;*/
+    font-size: 2.5vmin;
+  }
+
+  .order_items {
+    /*background-color: mediumorchid;*/
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order_item {
+    /*background-color: orange;*/
+    padding: 0.2vh 0;
+    width: 48%;
+  }
+
+  .order_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 2.2vw;
+    width: 80%;
+  }
+
+  .order_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .order_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_things {
+    /*background-color: hotpink;*/
+    margin-bottom: 1vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_registration {
+    /*background-color: teal;*/
+    margin-bottom: 0.5vh;
+    padding: 0 1vw;
+    text-align: right;
+  }
+
+  .registration_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 2.2vmin;
+    padding: 0.3vh 0;
+    width: 35%;
+  }
+
+  .registration_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .registration_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_table {
+    /*background-color: olivedrab;*/
+    padding: 0.2vh 0.2vw;
+  }
+
+  .table {
+    border:1px solid rgb(230, 230, 230);
+    display: block;
+    font-size: 1.8vmin;
+    line-height: 1.3em;
+    max-height: 650px;
+    overflow-x: auto;
+    overflow-y: auto;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  th {
+    background-color: black;
+    color: white;
+    font-weight: normal;
+    line-height: 1.3em;
+    position: sticky;
+    top: 0;
+  }
+
+  td {
+    background-color: white;
+    border-right: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 0.7vh 0;
+  }
+
+  tr:hover td {
+    background-color: darkgray;
+  }
+
+  .t1 {
+    width: 23vw;
+  }
+
+  .t2 {
+    width: 12%;
+  }
+
+  .t3 {
+    width: 4%;
+  }
+
+  .t4 {
+    width: 4%;
+  }
+
+  .t5 {
+    width: 11%;
+  }
+
+  .t6 {
+    width: 15%;
+  }
+
+  .t7 {
+    width: 19%;
+  }
+
+  .t8 {
+    width: 7%;
+  }
+
+  .td_left {
+    text-align: left;
+    word-wrap: break-word;
+  }
+
+  .todo_counting {
+    /*background-color: hotpink;*/
+    margin-bottom: 0.5vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .counting_table {
+    border:1px solid rgb(230, 230, 230);
+    display: block;
+    font-size: 1.8vmin;
+    line-height: 1.3em;
+    max-height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .th1 {
+    width: 27vw;
+  }
+
+  .th2 {
+    width: 13%
+  }
+
+  .th3-1 {
+    width: 6%
+  }
+
+  .th4-1 {
+    width: 6%
+  }
+
+  .th5-1 {
+    width: 6%
+  }
+
+  .th_under {
+    font-size: 1.3vmin;
+  }
+
+  .th_right {
+    text-align: right;
+    word-wrap: break-word;
+  }
+
+  .edit_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.8vmin;
+  }
+
+  .edit_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .edit_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_table {
+    /*background-color: olivedrab;*/
+    padding: 0.2vh 0.2vw;
+  }
+
+/* PC用、スマートフォン(Landscape)用デザイン */
+@media (min-width: 1024px), (orientation: landscape) {
+  .main_container {
+    /*background-color: yellow;*/
+    border: 2px solid rgb(72, 72, 72);
+    margin: 0 2vw;
+    padding: 0.5vh 0.5vw;
+  }
+  
+  .show_orders {
+    background-color: darkgray;
+    margin-bottom: 2vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_title {
+    /*background-color: khaki;*/
+    font-size: 2vw;
+    margin-bottom: 0.5vh;
+    padding-left: 1vw;
+    text-align: left;
+  }
+
+  .select_container {
+    /*background-color: deeppink;*/
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5vh;
+    padding: 1vh 1vw;
+  }
+
+  .select_item {
+    background-color: white;
+    padding: 1vh 0.2vw;
+    width: 60%;
+  }
+
+  .select_title {
+    /*background-color: tomato;*/
+    font-size: 1.5vw;
+    margin-right: 3vw;
+    text-align: left;
+    width: 10vw;
+  }
+
+  .input_short {
+    border: 1px solid gray;
+    font-size: 1.2vw;
+    margin-right: 3vw;
+    width: 25vw;
+  }
+
+  .select_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-size: 1.2vw;
+    width: 10vw;
+  }
+
+  .select_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .select_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .order_container {
+    /*background-color: lightseagreen;*/
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh 1vw;
+  }
+
+  .show_order {
+    background-color: white;
+    padding: 0.2vh 0.2vw;
+    width: 23%;
+  }
+
+  .order_title {    
+    /*background-color: seagreen;*/
+    font-size: 1.5vw;
+  }
+
+  .order_items {
+    /*background-color: mediumorchid;*/
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order_item {
+    /*background-color: orange;*/
+    width: 48%;
+  }
+
+  .order_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 1vw;
+    width:80%;
+  }
+
+  .order_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .order_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_things {
+    /*background-color: hotpink;*/
+    margin-bottom: 2vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+
+  .todo_registration {
+    /*background-color: teal;*/
+    margin-bottom: 1vh;
+    padding: 0 1vw;
+    text-align: right;
+  }
+
+  .registration_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 1vw;
+    padding: 1vh 0;
+    width: 25%;
+  }
+
+  .registration_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .registration_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+  .todo_table {
+    /*background-color: olivedrab;*/
+    padding: 0.2vh 0.2vw;
+  }
+
+  .table {
+    border:1px solid rgb(230, 230, 230);
+    display: block;
+    font-size: 0.9vw;
+    line-height: 1.3em;
+    max-height: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    table-layout:fixed;
+    width: 100%;
+  }
+
+  th {
+    background-color: black;
+    color: white;
+    font-weight: normal;
+    line-height: 1.3em;
+    padding: 1vh 0;
+  }
+
+  td {
+    background-color: white;
+    border-right: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 0.7vh 0;
+  }
+
+  tr:hover td {
+    background-color: darkgray;
+  }
+
+  .t1 {
+    width: 25vw;
+  }
+
+  .t2 {
+    width: 10%;
+  }
+
+  .t3 {
+    width: 7%;
+  }
+
+  .t4 {
+    width: 7%;
+  }
+
+  .t5 {
+    width: 12%;
+  }
+
+  .t6 {
+    width: 15%;
+  }
+
+  .t7 {
+    width: 15%;
+  }
+
+  .t8 {
+    width: 6%;
+  }
+
+  .td_left {
+    text-align: left;
+    word-wrap: break-word;
+  }
+  
+  .todo_counting {
+    /*background-color: hotpink;*/
+    margin-bottom: 1vh;
+    padding: 0.5vh 0.5vw;
+    width: 100%;
+  }
+  
+  .counting_table {
+    border:1px solid rgb(230, 230, 230);
+    display: block;
+    font-size: 0.9vw;
+    line-height: 1.3em;
+    max-height: 160px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    table-layout:fixed;
+    width: 100%;
+  }
+
+  .th1 {
+    width: 20vw;
+  }
+
+  .th2 {
+    width: 10%
+  }
+
+  .th3-1 {
+    width: 7%
+  }
+
+  .th4-1 {
+    width: 7%
+  }
+
+  .th5-1 {
+    width: 7%
+  }
+
+  .th_under {
+    font-size: 0.8vw;
+  }
+
+  .th_right {
+    text-align: right;
+    word-wrap: break-word;
+  }
+
+  .edit_button {
+    background-color: rgba(0, 0, 205, 0.8);
+    border: 1px solid black;
+    border-radius: 2px;
+    color: white;
+    font-size: 0.9vw;
+  }
+
+  .edit_button:hover {
+    background-color: rgba(0, 0, 205, 0.6);
+  }
+
+  .edit_button:focus {
+    background-color: rgba(0, 0, 205, 1);
+    outline: 0;
+  }
+
+}
