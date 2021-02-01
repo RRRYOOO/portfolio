@@ -45,10 +45,6 @@
       return $this->tempUserMailAddress;
     }
     
-    public function getTempUserPassword() {
-      return $this->tempUserPassword;
-    }
-
   //****************************************
   // 入力情報の確認
   //**************************************** 
