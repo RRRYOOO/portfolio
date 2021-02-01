@@ -8,7 +8,7 @@
   // ログイン状態の場合、ToDo表示画面へ遷移（ログイン状態のユーザがアクセスしてきた場合を想定）
   if(!empty($_SESSION['LoginUser'])) {
     // ToDo表示画面へ遷移
-    header('Location: .todo_show/todo_show.html');
+    header('Location: todo_show.html');
     exit;
   }
 
