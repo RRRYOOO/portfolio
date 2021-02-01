@@ -118,7 +118,7 @@
       } else if(!preg_match($this->adaptablePasswordLetters, $this->tempUserPassword)){
         $this->errorMessagePassword = '入力されたパスワードに使用できない文字が含まれています。';
         $this->tempUserPassword = null;
-      // メールアドレスの形式が正しいか確認
+      // パスワードの形式が正しいか確認
       } else if(!preg_match($this->adaptablePasswordPattern, $this->tempUserPassword)){
         $this->errorMessagePassword = 'パスワードは数字と英字の大文字と英字の小文字をそれぞれ1種類以上含むようにしてください。';
         $this->tempUserPassword = null;
