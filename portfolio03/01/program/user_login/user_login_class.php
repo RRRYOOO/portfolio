@@ -91,8 +91,7 @@
         $this->errorMessageMailAddress = '入力されたメールアドレスの形式が正しくありません。';
         $this->tempUserMailAddress = null;
         // メールアドレスが登録されているか確認
-      } else if(
-        empty(RegisteredUserData::getUserMailAddress($this->tempUserMailAddress))) {
+      } else if(empty(RegisteredUserData::getUserMailAddress($this->tempUserMailAddress))) {
         $this->errorMessageMailAddress = '入力されたメールアドレスの登録データがありません。';
         $this->tempUserMailAddress = null;
       }
