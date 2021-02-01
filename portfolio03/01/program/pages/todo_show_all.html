@@ -1,7 +1,9 @@
 <?php
-
   // phpファイルの読み込み
   require_once('../manager_login/present_login_manager_class.php');
+  require_once('../todo_show_all/todo_show_all_class.php');
+  require_once('../database_connect/database_connect.php');
+  require_once('../database_connect/department_data_class.php');
 
   // セッションスタート
   session_start();
@@ -16,17 +18,38 @@
   // ログインする管理者に関するセッション情報を取得
   $loginManager = $_SESSION['LoginManager'];
 
-  // ToDoShowのインスタンスを作成
-  //$todoShow = new TodoShow($loginManager->getManagerID());
-
+  // ToDoShowAllのインスタンスを作成
+  $todoShowAll = new TodoShowAll();
+  
+  // 変数の初期化
+  unset($department, $order);
+  // 部署指定ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
+  $department = $_POST['Department'];
   // 表示指示ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
   $order = $_POST['Order'];
-  // リダイレクトでない場合は、期限の昇順になるようにする。
+  // ToDo全表示画面の初回の表示は全部署の表示となるようにセッション情報を保存する。
+  if((empty($order) && empty($department))) {
+    $_SESSION['Department'] = 0;
+  // 部署指定ボタン押下によるリダイレクトの場合は、その表示指示をセッション情報に保存する
+  } else if(!empty($department)) {
+    $_SESSION['Department'] = $department;
+  }
+  // 部署名の取得
+  if($_SESSION['Department'] == 0) {
+    $departmentName = '全部署';
+  } else {
+    $departmentName = DepartmentData::exchangeIDToDepartment($_SESSION['Department']);
+  }
+  // 表示指示ボタン押下によるリダイレクトでない場合は、期限の昇順になるようにする。
   if(empty($order)) {
     $order = 1;
   }
-  // ToDoの表示順をセット
-  // $todoShow->setTodoOrder($order);
+
+  // データベースに接続
+  $dbh = DatabaseConnect::getDbh();
+  // 部署データを取得
+  $sql = 'SELECT * FROM department';
+  $departments = $dbh->query($sql);
 
 ?>
 
@@ -67,7 +90,6 @@
   <div class="main">
     <div class="main_wrapper">
       <div class="main_message">
-        <p><?php echo "メッセージ" ?></p>
       </div>
       <div class="main_title">
         <span>ToDo全表示</span>
@@ -80,14 +102,18 @@
             </div>
             <div class="select_container">
               <div class="select_item">
-                <form method="post" action="todo_show_all_control.html">
+                <form method="post" action="todo_show_all.html">
                   <span class="select_title">部署指定</span>
-                  <select class="input_short">
-                    <option value=""></option>
-                    <option value="1">人事</option>
+                  <select class="input_short" name="Department">
+                    <?php
+                      echo '<option value="0">全部署</option>';
+                      foreach($departments as $row) {
+                        echo '<option value="'.$row['id'].'">'.$row['department'].'</option>';
+                      }
+                    ?>
                   </select>
                     <!-- -->
-                    <input class="select_button" type="submit" value="指定">
+                    <input class="select_button" type="submit" value="選択">
                 </form>
               </div>
             </div>
@@ -172,34 +198,12 @@
           </div>
           <div class="todo_things">
             <div class="todo_title">
-              <span>ToDo一覧</span>
+              <span>ToDo一覧<?php echo ' （'.$departmentName.'）' ?> </span>
             </div>
             <div class="todo_table">
-              <table class="table">
-                <thead>
-                  <tr><th class="t1">タイトル</th><th class="t2">期日</th><th class="t3">難易度</th><th class="t4">重要度</th><th class="t5">ステータス</th><th class="t6">担当部署</th><th class="t7">担当者</th><th class="t8">操作</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                  <tr><td class="t1 td_left">XXXXXXXXXXXXXXX</td><td class="t2">yyyy-mm-dd</td><td class="t3">X</td><td class="t4">X</td><td class="t5">XXX</td><td class="t6">XXXXX</td><td class="t7">XXX XXX</td><td class="t8">詳細</td></tr>
-                </tbody>
-              </table>
+              <?php 
+                $todoShowAll->showToDoThings($_SESSION['Department'],$order);
+              ?>
             </div>
           </div>
           <div class="todo_counting">
@@ -212,8 +216,8 @@
                   <tr class="thead1">
                     <th class="th1">担当部署</th>
                     <th class="th2">ToDo総数</th>
-                    <th class="th3" colspan="3">難易度<br><span class="th_under">(高/中/低)</span></th>
-                    <th class="th4" colspan="3">重要度<br><span class="th_under">(高/中/低)</span></th>
+                    <th class="th3" colspan="3">難易度<br><span class="th_under">(低/中/高)</span></th>
+                    <th class="th4" colspan="3">重要度<br><span class="th_under">(低/中/高)</span></th>
                     <th class="th5" colspan="4">ステータス<br><span class="th_under">(未着手/進行中/完了/キャンセル)</span></th>
                   </tr>
                 </thead>
