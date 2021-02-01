@@ -8,6 +8,10 @@
     header('Location: ../todo_show/todo_show.html');
     exit;
   }
+
+  // セッション情報を破棄
+  $_SESSION = array();
+
   ?>
 
 <!DOCTYPE html>
@@ -44,7 +48,7 @@
           </div>
           <div class="main_button">
             <!-- 管理者ボタン (押すと管理者ログイン画面に遷移する) -->
-            <button class="select_button manager_button" onclick="location.href=''"><span class="fas fa-user-tie"></span>管理者としてログイン</button>            
+            <button class="select_button manager_button" onclick="location.href='manager_login.html'"><span class="fas fa-user-tie"></span>管理者としてログイン</button>            
           </div>
         </div>
       </div>
