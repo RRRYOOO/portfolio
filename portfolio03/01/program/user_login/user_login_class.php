@@ -63,7 +63,7 @@
       }
       // メールアドレスとパスワードの入力が正しい場合
       if($errorFlag == 0) {
-        // メールアドレスとパスワードが一致するか確認
+        // メールアドレスとパスワードがデータベースの登録情報と一致するか確認
         if(!empty($this->userMailAddressPasswordMatchCheck())) {
           $errorFlag = 1;
         }
@@ -127,13 +127,13 @@
       return $this->errorMessagePassword;
     }
 
-    // メールアドレスとパスワードが一致するか確認
+    // メールアドレスとパスワードがデータベースの登録情報と一致するか確認
     public function userMailAddressPasswordMatchCheck() {
       // エラーメッセージの初期化
       $this->errorMessageMailAddressPasswordMatch = null;
       // 入力されたメールアドレスで登録されているユーザのパスワード(暗号化)を取り出す
       $this->tempUserPasswordHashed = RegisteredUserData::getUserPasswordHashed($this->tempUserMailAddress);
-      // 取り出したパスワード(暗号化)を複合し、入力されたパスワードと一致するか確認する
+      // 取り出したパスワード(暗号化)と入力されたパスワードを暗号化したものが一致するか確認する
       if(password_verify($this->tempUserPassword, $this->tempUserPasswordHashed) != 1) {
         $this->errorMessageMailAddressPasswordMatch = 'パスワードが間違っています。';
         $this->tempUserPassword = null;
