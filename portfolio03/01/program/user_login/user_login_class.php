@@ -61,7 +61,7 @@
       if(!empty($this->userPasswordCheck())) {
         $errorFlag = 1;
       }
-      //メールアドレスとパスワードの入力が正しい場合
+      // メールアドレスとパスワードの入力が正しい場合
       if($errorFlag == 0) {
         // メールアドレスとパスワードが一致するか確認
         if(!empty($this->userMailAddressPasswordMatchCheck())) {
