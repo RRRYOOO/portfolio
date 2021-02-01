@@ -1,3 +1,48 @@
+<?php
+  // phpファイルの読み込み
+  require_once('../manager_login/manager_login_class.php');
+  
+  // セッションスタート
+  session_start();
+
+  // ログイン状態の場合、ToDo全表示画面へ遷移（ログイン状態の管理者がアクセスしてきた場合を想定）
+  if(!empty($_SESSION['LoginManager'])) {
+    // ToDo表示画面へ遷移
+    header('Location: todo_show_all.html');
+    exit;
+  }
+
+  // ログイン画面の入力情報で作成したセッション情報を破棄（ログイン画面から遷移してきたことを想定）
+  unset($_SESSION['LoginTempUser'], $_SESSION['LoginRedirectFlag'], $_SESSION['LoginErrorFlag']);
+
+  // ユーザ登録画面の入力情報で作成したセッション情報を破棄（ユーザ登録画面から遷移してきた場合を想定）
+  unset($_SESSION['RegistrationTempUser'], $_SESSION['RegistrationRedirectFlag'], $_SESSION['RegistrationErrorFlag'], $_SESSION['RegistrationCheckPassFlag']);
+
+  // リダイレクトかどうか判断
+  $redirectFlag = 0;
+  // リダイレクトの場合
+  if($_SESSION['ManagerLoginRedirectFlag'] == 1) {
+    // リダイレクトフラグの値を受け取る
+    $redirectFlag = $_SESSION['ManagerLoginRedirectFlag'];
+    // 前回の入力値で作成したインスタンスを受け取る
+    $temporaryManager = $_SESSION['LoginTempManager'];
+    // エラーによるリダイレクトかどうかを判断
+    $errorFlag = 0;
+    // エラーによるリダイレクトの場合
+    if($_SESSION['ManagerLoginErrorFlag'] == 1) {
+      // エラーフラグの値を受け取る
+      $errorFlag = $_SESSION['ManagerLoginErrorFlag'];
+    }
+  // リダイレクトでない場合
+  } else {
+    // 前回の入力値で作成したインスタンスのセッション情報を破棄
+    unset($_SESSION['ManagerLoginTempUser']);
+    // ダミーの入力データでインスタンスを作成
+    $temporaryManager = new ManagerLogin(null,null);
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -33,7 +78,12 @@
       <div class="main_message"> 
         <!-- エラーによりリダイレクトされた場合は、エラーメッセージを表示 -->
         <?php 
-          echo "メッセージ";
+          if($errorFlag == 1) {
+            echo '<p>'.$temporaryManager->errorMessageManagerID.'</p>';
+            echo '<p>'.$temporaryManager->errorMessagePassword.'</p>';
+            echo '<p>'.$temporaryManager->errorMessageManagerIDPasswordMatch.'</p>';
+            $temporaryManager->errorMessageLogin.'</p>';
+          }
         ?>
       </div>
       <div class="main_title">
@@ -47,7 +97,7 @@
             <div class="input_contents">
               <span class="input_item">管理者ID</span>
                 <!-- エラーによりリダイレクトされた場合は、前回入力値を表示（次項目がエラーだった場合はクリアされる） -->
-              <input class="input_area" name="管理者ID" value="<?php echo "" ?>">
+              <input class="input_area" name="ManagerID" value="<?php echo $temporaryManager->getTempManagerID() ?>">
             </div>
             <!-- パスワードを入力 -->
             <div class="input_contents">
@@ -83,3 +133,13 @@
   </footer>
 </body>
 </html>
+
+
+<?php
+  // リダイレクトフラグのセッション情報を破棄
+  unset($_SESSION['ManagerLoginRedirectFlag']);
+  // エラーフラグのセッション情報を破棄
+  unset($_SESSION['ManagerLoginErrorFlag']);
+  // 前回の入力情報で作成したインスタンスに関するセッション情報を破棄(ダミーのインスタンスを作成)
+  $_SESSION['LoginTempManager'] = new ManagerLogin(null,null);
+?>

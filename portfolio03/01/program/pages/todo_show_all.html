@@ -1,3 +1,35 @@
+<?php
+
+  // phpファイルの読み込み
+  require_once('../manager_login/present_login_manager_class.php');
+
+  // セッションスタート
+  session_start();
+
+  // ログアウト状態の場合、ログイン画面へ遷移（ログアウト状態の管理者がアクセスしてきた場合を想定）
+  if(empty($_SESSION['LoginManager'])) {
+    // ログイン画面へ遷移
+    header('Location: manager_login.html');
+    exit;
+  }
+
+  // ログインする管理者に関するセッション情報を取得
+  $loginManager = $_SESSION['LoginManager'];
+
+  // ToDoShowのインスタンスを作成
+  //$todoShow = new TodoShow($loginManager->getManagerID());
+
+  // 表示指示ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
+  $order = $_POST['Order'];
+  // リダイレクトでない場合は、期限の昇順になるようにする。
+  if(empty($order)) {
+    $order = 1;
+  }
+  // ToDoの表示順をセット
+  // $todoShow->setTodoOrder($order);
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,8 +48,8 @@
     <div class="header_wrapper">
       <div class="header_left">
         <div class="header_contents">
-          <span class="fas fa-user"></span>
-          <span><?php echo "管理者" ?></span>
+          <span class="fas fa-user-tie"></span>
+          <span><?php echo $loginManager->getManagerID() ?></span>
         </div>
       </div>
       <div class="header_center">
