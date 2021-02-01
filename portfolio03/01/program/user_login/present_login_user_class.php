@@ -6,16 +6,16 @@
   class PresentLoginUser
   {
     // ユーザ情報に関する変数
-    private $UserID;
-    private $RegistrationDate;
-    private $UserLastName;
-    private $UserFirstName;
-    private $UserMailAddress;
-    private $UserGender;
-    private $UserGenderJapanese;
-    private $UserAge;
-    private $UserDepartmentID;
-    private $UserDepartment;
+    private $userID;
+    private $registrationDate;
+    private $userLastName;
+    private $userFirstName;
+    private $userMailAddress;
+    private $userGender;
+    private $userGenderJapanese;
+    private $userAge;
+    private $userDepartmentID;
+    private $userDepartment;
 
   //****************************************
   // コンストラクタ
@@ -23,16 +23,16 @@
 
     public function __construct($mailAddress){
       // 渡されたメールアドレスで登録されているユーザの情報を現在ログイン中のユーザの情報として設定する(パスワードの情報は設定しない)
-      $this->UserID = RegisteredUserData::getUserID($mailAddress);
-      $this->RegistrationDate = RegisteredUserData::getRegistrationDate($mailAddress);
-      $this->UserLastName = RegisteredUserData::getUserLastName($mailAddress);
-      $this->UserFirstName = RegisteredUserData::getUserFirstName($mailAddress);
-      $this->UserMailAddress = RegisteredUserData::getUserMailAddress($mailAddress);
-      $this->UserGender = RegisteredUserData::getUserGender($mailAddress);
-      $this->UserGenderJapanese = RegisteredUserData::getUserGenderJapanese($mailAddress);
-      $this->UserAge = RegisteredUserData::getUserAge($mailAddress);
-      $this->UserDepartmentID = RegisteredUserData::getUserDepartmentID($mailAddress);
-      $this->UserDepartment = RegisteredUserData::getUserDepartment($mailAddress);
+      $this->userID = RegisteredUserData::getUserID($mailAddress);
+      $this->registrationDate = RegisteredUserData::getRegistrationDate($mailAddress);
+      $this->userLastName = RegisteredUserData::getUserLastName($mailAddress);
+      $this->userFirstName = RegisteredUserData::getUserFirstName($mailAddress);
+      $this->userMailAddress = RegisteredUserData::getUserMailAddress($mailAddress);
+      $this->userGender = RegisteredUserData::getUserGender($mailAddress);
+      $this->userGenderJapanese = RegisteredUserData::getUserGenderJapanese($mailAddress);
+      $this->userAge = RegisteredUserData::getUserAge($mailAddress);
+      $this->userDepartmentID = RegisteredUserData::getUserDepartmentID($mailAddress);
+      $this->userDepartment = RegisteredUserData::getUserDepartment($mailAddress);
     }
 
 
@@ -42,52 +42,52 @@
 
     // ユーザIDを返す
     public function getUserID() {
-      return $this->UserID;
+      return $this->userID;
     }
 
     // 登録日を返す
     public function getRegistrationDate() {
-      return $this->RegistrationDate;
+      return $this->registrationDate;
     }
 
     // 姓を返す
     public function getUserLastName() {
-      return $this->UserLastName;
+      return $this->userLastName;
     }
 
     // 名を返す
     public function getUserFirstName() {
-      return $this->UserFirstName;
+      return $this->userFirstName;
     }
 
     // メールアドレスを返す
     public function getUserMailAddress() {
-      return $this->UserMailAddress;
+      return $this->userMailAddress;
     }
 
     // 性別('man'or'woman')を返す
     public function getUserGender() {
-      return $this->UserGender;
+      return $this->userGender;
     }
 
     // 性別('男'or'女')を返す
     public function getUserGenderJapanese() {
-      return $this->UserGenderJapanese;
+      return $this->userGenderJapanese;
     }
     
     // 年齢を返す
     public function getUserAge() {
-      return $this->UserAge;
+      return $this->userAge;
     }
 
     // 部署IDを返す
     public function getUserDepartmentID() {
-      return $this->UserDepartmentID;
+      return $this->userDepartmentID;
     }
 
     // 部署を返す
     public function getUserDepartment() {
-      return $this->UserDepartment;
+      return $this->userDepartment;
     }
 
   }
