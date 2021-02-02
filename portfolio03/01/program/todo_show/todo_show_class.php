@@ -95,23 +95,29 @@
         echo '<div class="main_message"><p style="font-weight: bold; text-align: center">ToDoの登録がありません。ToDoを登録してください。</p></div>';
       // ToDoの登録がある場合は、各ToDo情報を指定された表示順で表示する（テーブル)
       } else {
-        echo '<table class="table"><thead>
-        <tr><th class="t1">タイトル</th>
-        <th class="t2">内容</th>
-        <th class="t3">期日</th>
-        <th class="t4">難易度</th>
-        <th class="t5">重要度</th>
-        <th class="t6">ステータス</th>
-        <th class="t7">操作</th></tr>
-        </thead><tbody>';
+        echo 
+          '<table class="table"><thead>
+          <tr><th class="t1">タイトル</th>
+          <th class="t2">内容</th>
+          <th class="t3">期日</th>
+          <th class="t4">難易度</th>
+          <th class="t5">重要度</th>
+          <th class="t6">ステータス</th>
+          <th class="t7">操作</th></tr>
+          </thead><tbody>';
         foreach($this->todoArray as $todo) {
-          echo '<tr><td class="t1 td_left" style="vertical-align: top">'.$todo["todo_title"].'</td>
-          <td class="t2 td_left" style="vertical-align: top; white-space: pre-wrap">'.$todo["todo_content"].'</td>
-          <td class="t3" style="text-align: center; vertical-align: top">'.$todo["todo_deadline"].'</td>
-          <td class="t4" style="text-align: center; vertical-align: top">'.$this->exchangeDifficulty($todo["todo_difficulty"]).'</td>
-          <td class="t5" style="text-align: center; vertical-align: top">'.$this->exchangeImportance($todo["todo_importance"]).'</td>
-          <td class="t6" style="text-align: center; vertical-align: top">'.$this->exchangeStatus($todo["todo_status"]).'</td>
-          <td class="t7" style="text-align: center; vertical-align: top"><form method="post" action="../todo_edit/todo_edit_transition.php"><input type="hidden" name="EditTodoID" value="'.$todo["id"].'">              <input class="edit_button" type="submit" value="編集"></form></td></tr>';
+          echo
+            '<tr><td class="t1 td_left" style="vertical-align: top">'.$todo["todo_title"].'</td>
+            <td class="t2 td_left" style="vertical-align: top; white-space: pre-wrap">'.$todo["todo_content"].'</td>
+            <td class="t3" style="text-align: center; vertical-align: top">'.$todo["todo_deadline"].'</td>
+            <td class="t4" style="text-align: center; vertical-align: top">'.$this->exchangeDifficulty($todo["todo_difficulty"]).'</td>
+            <td class="t5" style="text-align: center; vertical-align: top">'.$this->exchangeImportance($todo["todo_importance"]).'</td>
+            <td class="t6" style="text-align: center; vertical-align: top">'.$this->exchangeStatus($todo["todo_status"]).'</td>
+            <td class="t7" style="text-align: center; vertical-align: top">
+            <form method="post" action="../todo_edit/todo_edit_transition.php">
+            <input type="hidden" name="EditTodoID" value="'.$todo["id"].'">
+            <input class="edit_button" type="submit" value="編集">
+            </form></td></tr>';
         }
       }
       echo '</tbody></table>';
