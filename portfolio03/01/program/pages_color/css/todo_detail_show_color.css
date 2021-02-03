@@ -11,16 +11,6 @@
   padding: 2vh 2vw;
 }
 
-.input_message {
-  background-color: pink;
-  color: red;
-  font-weight: bold;
-  margin-top: 2vmin;
-  padding: 1vh 1vw;
-  text-align: left;
-  width: 100%
- }
-
 .input_contents {
   background-color: turquoise;
   display: flex;
@@ -70,62 +60,7 @@
   width: 62vw;
 }
 
-.edit_input {
-  background-color: turquoise;
-  display: flex;
-  justify-content: space-between; 
-  margin-top: 4vh;
-  padding: 1vh 0;
-  width: 100%
-}
-
-.edit_split {
-  background-color: green;
-  margin: 0;
-  padding: 1vh 1vw;
-  text-align: center;
-  width: 45%
-}
-
-.redirect_button {
-  background-color:  rgba(72, 72, 72, 0.8);
-  border: 1px solid black;
-  border-radius: 7px;
-  color: white;
-  font-size: 2.5vmin;
-  padding: 0.8vh 0;
-  width: 35vw;
-}
-
-.redirect_button:hover {
-  background-color: rgba(72, 72, 72, 0.6);
-}
-
-.redirect_button:focus {
-  background-color:  rgba(72, 72, 72, 1);
-  outline: 0;
-}
-
-.excute_button {
-  background-color:  rgba(0, 0, 205, 0.8);
-  border: 1px solid black;
-  border-radius: 7px;
-  color: white;
-  font-size: 2.5vmin;
-  padding: 0.8vh 0;
-  width: 35vw;
-}
-
-.excute_button:hover {
-  background-color: rgba(0, 0, 205, 0.6);
-}
-
-.excute_button:focus {
-  background-color:  rgba(0, 0, 205, 1);
-  outline: 0;
-}
-
-.link_to_todoshow {
+.link_to_todoshowall {
   background-color: turquoise;
   margin-top: 2vh;
   padding: 1vh 1vw;
@@ -150,16 +85,6 @@
     margin: 0 2vw;
     padding: 2vh 2vw;
   }
-
-  .input_message {
-    background-color: pink;
-    color: red;
-    font-weight: bold;
-    margin: 2vh auto 0;
-    padding: 1vh 1vw;
-    text-align: left;
-    width: 90%
-  } 
 
   .input_contents {
     background-color: turquoise;
@@ -216,62 +141,7 @@
     width: 68vw;
   }
 
-  .edit_input {
-    background-color: turquoise;
-    display: flex;
-    justify-content: space-between; 
-    margin: 4vh auto 0;
-    padding: 1vh 0;
-    width: 90%;
-  }
-
-  .edit_split {
-    background-color: green;
-    margin: 0;
-    padding: 1vh 1vw;
-    text-align: center;
-    width: 45%
-  }
-
-  .redirect_button {
-    background-color: rgba(72, 72, 72, 0.8);
-    border: 1px solid black;
-    border-radius: 7px;
-    color: white;
-    font-size: 1.2vw;
-    padding: 1vh 0;
-    width: 20vw;
-  }
-
-  .redirect_button:hover {
-    background-color: rgba(72, 72, 72, 0.6);
-  }
-
-  .redirect_button:focus {
-    background-color: rgba(72, 72, 72, 1);
-    outline: 0;
-  }
-  
-  .excute_button {
-    background-color: rgba(0, 0, 205, 0.8);
-    border: 1px solid black;
-    border-radius: 7px;
-    color: white;
-    font-size: 1.2vw;
-    padding: 1vh 0;
-    width: 20vw;
-  }
-
-  .excute_button:hover {
-    background-color: rgba(0, 0, 205, 0.6);
-  }
-
-  .excute_button:focus {
-    background-color: rgba(0, 0, 205, 1);
-    outline: 0;
-  }
-
-  .link_to_todoshow{
+  .link_to_todoshowall{
     background-color: turquoise;
     margin: 0.2vh auto ;
     padding: 0 1vw;
