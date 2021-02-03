@@ -114,7 +114,7 @@
           <td class="t5">'.$this->exchangeStatus($todo["todo_status"]).'</td>
           <td class="t6">'.$todo["department"].'</td>
           <td class="t7">'.$todo["user_lastname"].' '.$todo["user_firstname"].'</td>
-          <td class="t8"><form method="post" action="../todo_show_all/todo_show_detail.php"><input type="hidden" name="EditTodoID" value="'.$todo["id"].'"><input class="edit_button" type="submit" value="詳細"></form></td></tr>';
+          <td class="t8"><form method="post" action="../todo_show_all/todo_detail_show.php"><input type="hidden" name="EditTodoID" value="'.$todo["id"].'"><input class="edit_button" type="submit" value="詳細"></form></td></tr>';
         }
       }
       echo '</tbody></table>';
