@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- ①文字コード -->
+    <meta charset="utf-8">
+    <!-- ②ページタイトル -->
+    <title>ToDoList</title>
+    <!-- ③スタイルシートの読み込み -->
+    <link rel="stylesheet" href="./css/stylesheet_common.css">
+    <link rel="stylesheet" href="./css/todo_detail_show.css">
+    <script src="https://kit.fontawesome.com/284bd436b5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_left">
+        <div class="header_contents">
+          <span class="fas fa-user"></span>
+          <span><?php echo '田中 太郎' ?></span>
+        </div>
+      </div>
+      <div class="header_center">
+        <span class="site_title">ToDoList</span>
+      </div>
+      <div class="header_right">
+        <div class="header_contents">
+          <a href="../user_login/user_logout.php" class="header_link">
+            <span>ログアウト</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <div class="main_wrapper">
+      <div class="main_message"> 
+      </div>
+      <div class="main_title">
+        <span>ToDo詳細表示</span>
+      </div>
+      <div class="main_contents">
+        <div class="main_container">          
+          <!-- 選択されたToDoの詳細を表示 -->
+          <!-- 選択されたToDoのタイトルを表示 -->
+          <div class="input_contents">
+            <span class="input_item">タイトル</span>
+            <span class="input_long"><?php echo 'インターンシップの企画'?></span>
+          </div>
+          <!-- 選択されたToDoの内容を表示 -->
+          <div class="input_contents">
+            <span class="input_item">内容</span>
+            <span class="textarea_long"><?php echo '2022年度入社の学生向けにインターンシップを企画する。' ?></span>
+          </div>
+          <div class="input_selects">
+            <div class="input_split">
+              <!-- 選択されたToDoの登録日を表示 -->
+              <span class="input_item">登録日</span>
+              <span class="input_short"><?php echo '2021-01-10' ?></span>
+            </div> 
+            <div class="input_split">
+              <!-- 選択されたToDoの期限を表示 -->
+              <span class="input_item">期限</span>
+              <span class="input_short"><?php echo '2021-02-02' ?></span>
+            </div> 
+            <div class="input_split">
+              <!-- 選択されたToDoの担当部署を表示 -->
+              <span class="input_item">担当部署</span>                                   
+              <span class="input_short"><?php echo '人事' ?></span>
+            </div>
+            <div class="input_split">
+              <!-- 選択されたToDoの担当者を表示  -->
+              <span class="input_item">担当者</span>                                             
+              <span class="input_short"><?php echo '田中 太郎' ?></span>
+            </div>            
+            <div class="input_split">
+              <!-- 選択されたToDoの難易度を表示 -->
+              <span class="input_item">難易度</span>                                   
+              <span class="input_short"><?php echo '高' ?></span>
+            </div>
+            <div class="input_split">
+              <!-- 選択されたToDoの重要度を表示 -->
+              <span class="input_item">重要度</span>                                             
+              <span class="input_short"><?php echo '中' ?></span>
+            </div>
+            <div class="input_split">
+              <!-- 選択されたToDoのステータスを表示 -->
+              <span class="input_item">ステータス</span>                                             
+              <span class="input_short"><?php echo '進行中' ?></span>
+            </div>            
+          </div>
+        </div>
+        <!-- ToDo全表示画面へのリンク -->
+        <div class="link_to_todoshowall">
+          <a href="todo_show.html"><span class="link">ToDo全表示画面に戻る</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_left">
+        <span class="footer_contents"></span>
+      </div>
+      <div class="footer_center">
+        <span class="site_inc">© Portfolio .inc</span>
+      </div>
+      <div class="footer_right">
+        <span class="footer_contents"></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
