@@ -21,29 +21,38 @@
 
   // ToDoShowAllのインスタンスを作成
   $todoShowAll = new TodoShowAll();
-  
-  // 変数の初期化
-  unset($department, $order);
-  // 部署指定ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
-  $department = $_POST['Department'];
-  // 表示指示ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
-  $order = $_POST['Order'];
-  // ToDo全表示画面の初回の表示は全部署の表示となるようにセッション情報を保存する。
-  if((empty($order) && empty($department))) {
-    $_SESSION['Department'] = 0;
-  // 部署指定ボタン押下によるリダイレクトの場合は、その表示指示をセッション情報に保存する
-  } else if(!empty($department)) {
-    $_SESSION['Department'] = $department;
+
+  // ToDo詳細表示画面から戻ってきた場合
+  // リターンフラグを受け取る。
+  $returnFlag = $_POST['RedirectFlag'];
+
+  // リターンフラグが1の場合、前回の部署指定と表示指定を引き継ぐ
+  // リターンフラグが1でない場合、部署指定と表示指定の設定を行う
+  if($returnFlag != 1) {
+    // 変数の初期化
+    unset($department, $order);
+    // 部署指定ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
+    $department = $_POST['Department'];
+    // 表示指示ボタン押下によるリダイレクトの場合は、その表示指示を受け取る
+    $order = $_POST['Order'];
+    // ToDo全表示画面の初回の表示は全部署の表示かつ期限の昇順となるようにセッション情報を保存する
+    if((empty($order) && empty($department))) {
+      $_SESSION['Department'] = 0;
+      $_SESSION['Order'] = 1;
+    // 部署指定ボタン押下によるリダイレクトの場合は、その表示指示をセッション情報に保存する
+    } else if(!empty($department)) {
+      $_SESSION['Department'] = $department;
+    // 表示順序指定ボタン押下によるリダイレクトの場合は、その表示指示をセッション情報に保存する
+    } else if(!empty($order)) {
+      $_SESSION['Order'] = $order;
+    }
   }
+
   // 部署名の取得
   if($_SESSION['Department'] == 0) {
     $departmentName = '全部署';
   } else {
     $departmentName = DepartmentData::exchangeIDToDepartment($_SESSION['Department']);
-  }
-  // 表示指示ボタン押下によるリダイレクトでない場合は、期限の昇順になるようにする。
-  if(empty($order)) {
-    $order = 1;
   }
 
   // データベースに接続
@@ -51,7 +60,6 @@
   // 部署データを取得
   $sql = 'SELECT * FROM department';
   $departments = $dbh->query($sql);
-
 ?>
 
 
@@ -105,6 +113,7 @@
               <div class="select_item">
                 <form method="post" action="todo_show_all.html">
                   <span class="select_title">部署指定</span>
+                  <!-- 表示したい部署のDepartmentIDをPOSTする -->
                   <select class="input_short" name="Department">
                     <?php
                       echo '<option value="0">全部署</option>';
@@ -113,7 +122,6 @@
                       }
                     ?>
                   </select>
-                    <!-- -->
                     <input class="select_button" type="submit" value="選択">
                 </form>
               </div>
@@ -203,7 +211,7 @@
             </div>
             <div class="todo_table">
               <?php 
-                $todoShowAll->showToDoThings($_SESSION['Department'],$order);
+                $todoShowAll->showToDoThings($_SESSION['Department'],$_SESSION['Order']);
               ?>
             </div>
           </div>
