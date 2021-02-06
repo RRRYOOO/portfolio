@@ -114,7 +114,7 @@
           <td class="t5">'.$this->exchangeStatus($todo["todo_status"]).'</td>
           <td class="t6">'.$todo["department"].'</td>
           <td class="t7">'.$todo["user_lastname"].' '.$todo["user_firstname"].'</td>
-          <td class="t8"><form method="post" action="../todo_show_all/todo_detail_show.php"><input type="hidden" name="EditTodoID" value="'.$todo["id"].'"><input class="edit_button" type="submit" value="詳細"></form></td></tr>';
+          <td class="t8"><form method="post" action="../todo_show_all/todo_show_detail.php"><input type="hidden" name="TodoID" value="'.$todo["id"].'"><input class="edit_button" type="submit" value="詳細"></form></td></tr>';
         }
       }
       echo '</tbody></table>';
@@ -141,7 +141,7 @@
         $sql = 'SELECT todo.id, todo.registration_date, todo_title, todo_content, todo_deadline, todo_difficulty, todo_importance, todo_status, user_lastname, user_firstname, department FROM todo JOIN users ON todo.user_id = users.id LEFT JOIN department ON users.user_department_id = department.id ORDER BY todo_deadline ASC;';
         $sth = $this->dbh->prepare($sql);
       } else {
-        $sql = 'SELECT todo.registration_date, todo_title, todo_content, todo_deadline, todo_difficulty, todo_importance, todo_status, user_lastname, user_firstname, department FROM todo JOIN users ON todo.user_id = users.id LEFT JOIN department ON users.user_department_id = department.id WHERE user_department_id = :user_department_id ORDER BY todo_deadline ASC;';
+        $sql = 'SELECT todo.id, todo.registration_date, todo_title, todo_content, todo_deadline, todo_difficulty, todo_importance, todo_status, user_lastname, user_firstname, department FROM todo JOIN users ON todo.user_id = users.id LEFT JOIN department ON users.user_department_id = department.id WHERE user_department_id = :user_department_id ORDER BY todo_deadline ASC;';
         $sth = $this->dbh->prepare($sql);
         $sth->bindparam(':user_department_id', $departmentID);
       }
