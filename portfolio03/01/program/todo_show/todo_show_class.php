@@ -90,6 +90,8 @@
 
     // 指定された表示順でセットされたToDo情報の配列を表示する
     public function showToDoThings() {
+      // ToDoを取得
+      $this->setToDo();
       // ToDoの登録がない場合、メッセージを表示
       if($this->todoEmptyFlag == 1) {
         echo '<div class="main_message"><p style="font-weight: bold; text-align: center">ToDoの登録がありません。ToDoを登録してください。</p></div>';
@@ -132,6 +134,30 @@
 
 
   //****************************************
+  // ToDoを取得
+  //****************************************
+
+    // データベースから登録されているToDoを取得
+    private function setTodo() {
+      // データベースに接続
+      $this->connectToDatabase();
+      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_deadline ASC;';
+      $sth = $this->dbh->prepare($sql);
+      $sth->bindparam(':user_id', $this->userID);
+      $sth->execute();
+      // 取得したデータを配列に格納
+      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
+      // ToDoエンプティフラグの初期化
+      $this->todoEmptyFlag = 0;
+      // ToDoがない場合はTodoエンプティフラグを立てる
+      if(empty($this->todoArray)) {
+        $this->todoEmptyFlag = 1;
+      }
+      return;
+    }
+
+
+  //****************************************
   // ToDoを指定された表示順でセットする
   //****************************************
 
@@ -169,154 +195,66 @@
     }
 
     // ToDoを期限が昇順になるようにセット
-    public function setTodoDeadlineAsc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_deadline ASC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }
+    private function setTodoDeadlineAsc() {
+      // ToDoを期限が昇順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_deadline');
+      array_multisort($order, SORT_ASC, $this->todoArray);
       return;
     }
 
     // ToDoを期限が降順になるようにセット
     private function setTodoDeadlineDesc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_deadline DESC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoを期限が降順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_deadline');
+      array_multisort($order, SORT_DESC, $this->todoArray);
       return;
     }
 
     // ToDoを難易度が昇順になるようにセット
     private function setTodoDifficultyAsc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_difficulty ASC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoを難易度が昇順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_difficulty');
+      array_multisort($order, SORT_ASC, $this->todoArray);
       return;
     }
 
     // ToDoを難易度が降順になるようにセット
     private function setTodoDifficultyDesc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_difficulty DESC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoを難易度が降順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_difficulty');
+      array_multisort($order, SORT_DESC, $this->todoArray);
       return;
     }
 
     // ToDoを重要度が昇順になるようにセット
     private function setTodoImportanceAsc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_importance ASC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoを重要度が昇順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_importance');
+      array_multisort($order, SORT_ASC, $this->todoArray);
       return;
     }
   
     // ToDoを重要度が降順になるようにセット
     private function setTodoImportanceDesc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_importance DESC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoを重要度が降順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_importance');
+      array_multisort($order, SORT_DESC, $this->todoArray);
       return;
     }
 
     // ToDoをステータスが昇順になるようにセット
     private function setTodoStatusAsc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_status ASC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoをステータスが昇順になるように並び替え
+      $order = array_column($this->todoArray, 'todo_status');
+      array_multisort($order, SORT_ASC, $this->todoArray);
       return;
     }
   
     // ToDoをステータスが降順になるようにセット
     private function setTodoStatusDesc() {
-      // データベースに接続
-      $this->connectToDatabase();
-      $sql = 'SELECT * FROM todo WHERE user_id = :user_id ORDER BY todo_status DESC;';
-      $sth = $this->dbh->prepare($sql);
-      $sth->bindparam(':user_id', $this->userID);
-      $sth->execute();
-      // 取得したデータを配列に格納
-      $this->todoArray = $sth->fetchAll(PDO::FETCH_ASSOC);
-      // ToDoエンプティフラグの初期化
-      $this->todoEmptyFlag = 0;
-      // ToDoがない場合はTodoエンプティフラグを立てる
-      if(empty($this->todoArray)) {
-        $this->todoEmptyFlag = 1;
-      }      
+      // ToDoをステータスが降順になるよう並び替え
+      $order = array_column($this->todoArray, 'todo_status');
+      array_multisort($order, SORT_DESC, $this->todoArray);
       return;
     }
   }
