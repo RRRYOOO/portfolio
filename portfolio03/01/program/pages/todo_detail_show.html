@@ -1,3 +1,25 @@
+<?php
+  // phpファイルの読み込み
+  require_once('../manager_login/present_login_manager_class.php');
+  require_once('../todo_show_all/todo_detail_show_class.php');
+
+  // セッションスタート
+  session_start();
+
+  // ログアウト状態の場合、ログイン画面へ遷移（ログアウト状態の管理者がアクセスしてきた場合を想定）
+  if(empty($_SESSION['LoginManager'])) {
+    // ログイン画面へ遷移
+    header('Location: manager_login.html');
+    exit;
+  }
+
+  // ログインする管理者に関するセッション情報を取得
+  $loginManager = $_SESSION['LoginManager'];
+
+  // 詳細を表示するToDoに関するセッション情報を取得
+  $todo = $_SESSION['ToDoDetailShow'];
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -16,7 +38,7 @@
       <div class="header_left">
         <div class="header_contents">
           <span class="fas fa-user"></span>
-          <span><?php echo '田中 太郎' ?></span>
+          <span><?php echo $loginManager->getManagerID() ?></span>
         </div>
       </div>
       <div class="header_center">
@@ -33,7 +55,7 @@
   </header>
   <div class="main">
     <div class="main_wrapper">
-      <div class="main_message"> 
+      <div class="main_message">
       </div>
       <div class="main_title">
         <span>ToDo詳細表示</span>
@@ -44,54 +66,57 @@
           <!-- 選択されたToDoのタイトルを表示 -->
           <div class="input_contents">
             <span class="input_item">タイトル</span>
-            <span class="input_long"><?php echo 'インターンシップの企画'?></span>
+            <span class="input_long"><?php echo $todo->getTodoTitle() ?></span>
           </div>
           <!-- 選択されたToDoの内容を表示 -->
           <div class="input_contents">
             <span class="input_item">内容</span>
-            <span class="textarea_long"><?php echo '2022年度入社の学生向けにインターンシップを企画する。' ?></span>
+            <span class="textarea_long"><?php echo $todo->getTodoContent() ?></span>
           </div>
           <div class="input_selects">
             <div class="input_split">
               <!-- 選択されたToDoの登録日を表示 -->
               <span class="input_item">登録日</span>
-              <span class="input_short"><?php echo '2021-01-10' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoRegistrationDate() ?></span>
             </div> 
             <div class="input_split">
               <!-- 選択されたToDoの期限を表示 -->
               <span class="input_item">期限</span>
-              <span class="input_short"><?php echo '2021-02-02' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoDeadline() ?></span>
             </div> 
             <div class="input_split">
               <!-- 選択されたToDoの担当部署を表示 -->
               <span class="input_item">担当部署</span>                                   
-              <span class="input_short"><?php echo '人事' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoDepartment() ?></span>
             </div>
             <div class="input_split">
               <!-- 選択されたToDoの担当者を表示  -->
               <span class="input_item">担当者</span>                                             
-              <span class="input_short"><?php echo '田中 太郎' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoUserLastName()." ".$todo->getTodoUserFirstName() ?></span>
             </div>            
             <div class="input_split">
               <!-- 選択されたToDoの難易度を表示 -->
               <span class="input_item">難易度</span>                                   
-              <span class="input_short"><?php echo '高' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoDifficulty() ?></span>
             </div>
             <div class="input_split">
               <!-- 選択されたToDoの重要度を表示 -->
               <span class="input_item">重要度</span>                                             
-              <span class="input_short"><?php echo '中' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoImportance() ?></span>
             </div>
             <div class="input_split">
               <!-- 選択されたToDoのステータスを表示 -->
               <span class="input_item">ステータス</span>                                             
-              <span class="input_short"><?php echo '進行中' ?></span>
+              <span class="input_short"><?php echo $todo->getTodoStatus() ?></span>
             </div>            
           </div>
         </div>
         <!-- ToDo全表示画面へのリンク -->
         <div class="link_to_todoshowall">
-          <a href="todo_show.html"><span class="link">ToDo全表示画面に戻る</span></a>
+          <form method="post" name="Return" action="todo_show_all.html">
+            <input type="hidden" name="RedirectFlag" value="1">          
+            <a href="javascript:Return.submit()"><span class="link">ToDo全表示画面に戻る</span></a>
+          </form>
         </div>
       </div>
     </div>
