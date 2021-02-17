@@ -1,7 +1,7 @@
 <?php
   // phpファイルの読み込み
-  require_once('../user_login/present_login_user_class.php');
-  require_once('../todo_edit/todo_edit_class.php');
+  require_once('./user_login/present_login_user_class.php');
+  require_once('./todo_edit/todo_edit_class.php');
 
   // セッションスタート
   session_start();
@@ -55,7 +55,7 @@
       </div>
       <div class="header_right">
         <div class="header_contents">
-          <a href="../user_login/user_logout.php" class="header_link">
+          <a href="./user_login/user_logout.php" class="header_link">
             <span>ログアウト</span>
           </a>
         </div>
@@ -144,11 +144,11 @@
             <div class="edit_input">
               <!-- 削除ボタン -->
               <div class="edit_split">
-                <button class="delete_button" formaction="../todo_edit/todo_delete_check.php">削除</button>
+                <button class="delete_button" formaction="./todo_edit/todo_delete_check.php">削除</button>
               </div>
               <!-- 編集ボタン -->
               <div class="edit_split">
-                <button class="register_button" formaction="../todo_edit/todo_edit_check.php">編集</button>
+                <button class="register_button" formaction="./todo_edit/todo_edit_check.php">編集</button>
               </div>
             </div>
           </form>  

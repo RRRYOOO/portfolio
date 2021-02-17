@@ -1,6 +1,6 @@
 <?php
   // phpファイルの読み込み
-  require_once('../user_login/user_login_class.php');
+  require_once('./user_login/user_login_class.php');
   
   // セッションスタート
   session_start();
@@ -99,7 +99,7 @@
       <div class="main_contents">
         <div class="main_container">
           <!-- 入力フォーム -->
-          <form method="post" action="../user_login/user_login_check.php">
+          <form method="post" action="./user_login/user_login_check.php">
             <!-- メールアドレスを入力 -->
             <div class="input_contents">
               <span class="input_item">メールアドレス</span>

@@ -1,7 +1,7 @@
 <?php
   // phpファイルの読み込み
-  require_once('../user_login/present_login_user_class.php');
-  require_once('../todo_show/todo_show_class.php');
+  require_once('./user_login/present_login_user_class.php');
+  require_once('./todo_show/todo_show_class.php');
   
   // セッションスタート
   session_start();
@@ -24,8 +24,6 @@
   if(empty($order)) {
     $order = 1;
   }
-  // ToDoの表示順をセット
-  $todoShow->setTodoOrder($order);
 
   // ToDo登録完了メッセージのセッション情報を取得
   $registrationCompMessage = null;
@@ -75,7 +73,7 @@
       </div>
       <div class="header_right">
         <div class="header_contents">
-          <a href="../user_login/user_logout.php" class="header_link">
+          <a href="./user_login/user_logout.php" class="header_link">
             <span>ログアウト</span>
           </a>
         </div>
@@ -186,8 +184,9 @@
               <button class="registration_button" onclick="location.href='todo_registration.html'"></span>ToDo登録</button>
             </div>
             <div class="todo_table">
+              <!-- ToDoを表示（表示順序を指定） -->
               <?php 
-                $todoShow->showToDoThings();
+                $todoShow->showToDoThings($order);
               ?>
             </div>
           </div>

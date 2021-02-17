@@ -1,7 +1,7 @@
 <?php
   // phpファイルの読み込み
-  require_once('../user_login/present_login_user_class.php');
-  require_once('../todo_edit/todo_edit_class.php');
+  require_once('./user_login/present_login_user_class.php');
+  require_once('./todo_edit/todo_edit_class.php');
 
   // セッションスタート
   session_start();
@@ -66,7 +66,7 @@
       </div>
       <div class="header_right">
         <div class="header_contents">
-          <a href="../user_login/user_logout.php" class="header_link">
+          <a href="./user_login/user_logout.php" class="header_link">
             <span>ログアウト</span>
           </a>
         </div>
@@ -134,10 +134,10 @@
               <!-- 確定ボタン (押すとToDoの編集が実行される) -->
               <!-- 削除処理の場合 -->
               <?php if($deleteFlag == 1):?>
-                <button class="excute_button" onclick="location.href='../todo_edit/todo_delete_execute.php'">確定</button>
+                <button class="excute_button" onclick="location.href='./todo_edit/todo_delete_execute.php'">確定</button>
               <!-- 編集処理の場合 -->
               <?php else :?>
-                <button class="excute_button" onclick="location.href='../todo_edit/todo_edit_execute.php'">確定</button>
+                <button class="excute_button" onclick="location.href='./todo_edit/todo_edit_execute.php'">確定</button>
               <?php endif; ?>
             </div>
           </div>

@@ -1,8 +1,8 @@
 <?php
   // phpファイルの読み込み
-  require_once('../manager_login/present_login_manager_class.php');
-  require_once('../todo_show_all/todo_show_all_class.php');
-  require_once('../todo_show_all/todo_counting_class.php');
+  require_once('./manager_login/present_login_manager_class.php');
+  require_once('./todo_show_all/todo_show_all_class.php');
+  require_once('./todo_show_all/todo_counting_class.php');
   require_once('../database_connect/database_connect.php');
   require_once('../database_connect/department_data_class.php');
 
@@ -89,7 +89,7 @@
       </div>
       <div class="header_right">
         <div class="header_contents">
-          <a href="../user_login/user_logout.php" class="header_link">
+          <a href="./user_login/user_logout.php" class="header_link">
             <span>ログアウト</span>
           </a>
         </div>
@@ -210,6 +210,7 @@
               <span>ToDo一覧<?php echo ' （'.$departmentName.'）' ?> </span>
             </div>
             <div class="todo_table">
+               <!-- ToDoを表示（部署と表示順序を指定） -->
               <?php 
                 $todoShowAll->showToDoThings($_SESSION['Department'],$_SESSION['Order']);
               ?>
